@@ -17,41 +17,46 @@ render() {
   return (
   	<div>
   	<div id ='postDiv' className="jobsDiv container"><br />
-  		<Row>
+  		<Row id="row">
 			<Col md={4}>
       <img src ="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profilePhoto"/>
-			<span>{this.props.item.user}</span>
+			<span id="custom-span">   {this.props.item.user}</span>
 			</Col>
-			<Col md={4}>
+      </Row><br />
+
+			<Col md={6}>
 			<span><b>I Am a  </b></span>
 			<span>{this.props.item.jobTitle}</span>
 			</Col>
-			<Col md={4}>
-			<span><b>Job Category : </b></span>
-			<span>{this.props.item.category}</span>
-			</Col>
-		</Row><br />
 
-        <Row>
-            <Col md={4}>
-            <span><b>I Am avilable From : </b></span>
-			<span>{this.props.item.from}</span>
+      <Col md={6}>
+      <span><b>Job Category : </b></span>
+      <span>{this.props.item.category}</span>
+
+      </Col><br />
+
+        <Row><br />
+            <Col md={6}>
+            <span>      I Am avilable  <b> From : </b></span>
+			         <span>{this.props.item.from}</span>
 			</Col>
-			<Col md={4}>
+			<Col md={6}>
 			<span><b>To : </b></span>
 			<span>{this.props.item.to}</span>
 			</Col>
-			<Col md={4}>
+
+      <Row>
+      <Col md={12}><br />
 			<span><b>You can contact with me on : </b></span>
 			<span>{phonNum}</span>
 			</Col>
+      </Row>
 		</Row><br />
 
 		<Row>
 		<Col md={1}>
 		</Col>
 			<Col id="description" md={10}>
-			<span><b>Description : </b></span>
 			<span>{this.props.item.jobDescription}</span>
 			</Col>
 			<Col md={1}>
@@ -66,12 +71,14 @@ render() {
 			<span>{this.props.item.created_at.slice(0, 10)}</span>
 			</Col>
 		 </Row>
+     <Row id="row">
      <form action="/sendMessage" method="post">
-     <span> send message to   </span>
-     <span>{this.props.item.user}</span>
+     <h4> send message to  <span id="custom-span">{this.props.item.user}</span> </h4>
+
      <input type="text" placeholder="message"/>
      <span> <button type="submit">send</button></span>
      </form>
+     </Row>
     </div><br />
 
     </div>

@@ -5,7 +5,11 @@ body {
     font-family: Rajdhani;
     color: DARKBLUE;
     font-size: 1.6rem;
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background-color: #274046
+}
+
+h2{
+  color: white;
 }
 
 ul {
@@ -135,7 +139,7 @@ li a:hover:not(.is-active) {
 }
 
 .jobsDiv {
-    background: url(https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimage.freepik.com%2Ffree-vector%2Fpolygonal-space-background-with-connecting-dots-and-lines_8188-135.jpg);
+    background-color: aliceblue;
     opacity: 0.8;
     border-radius: 10px;
     width: 900;
@@ -242,7 +246,7 @@ li a:hover:not(.is-active) {
 }
 
 #postTime {
-  color: skyblue;
+  color: grey;
   font-size: 12px;
 }
 
@@ -250,7 +254,6 @@ li a:hover:not(.is-active) {
   font-family: Mina;
   color: #141414;
   font-size: 18px;
-  box-shadow: 3px 3px grey;
 }
 
 #signup2 {
@@ -292,4 +295,11 @@ h2{
   height: 80px;
   border-radius: 100px;
 
+}
+
+#row{
+  background-color: #777;
+}
+#custom-span{
+  color: white;
 }

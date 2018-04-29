@@ -56,14 +56,9 @@ render() {
     <div>
     <div id="information">
 
-      <h2> Name : {this.state.states.name} </h2>
-
-
-
-      <h2>  Phone Number : {this.state.states.phoneNumber} </h2>
-
-
-
+      <h2> <span> <img id="profilePhoto" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" /></span>
+      Name : {this.state.states.name} </h2>
+    <h2>  Phone Number : {this.state.states.phoneNumber} </h2>
     <h2> Email: {this.state.states.email} </h2>
     <h2> Gender: {this.state.states.gender}</h2>
     <h2> Nationality: {this.state.states.nationality}</h2>
