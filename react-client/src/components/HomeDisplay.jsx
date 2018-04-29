@@ -7,23 +7,23 @@ class HomeDisplay extends React.Component {
   }
 
 
- 
+
 render() {
 	let phonNum=0;
 	if(this.props.item.userInfo.length>0){
 		 phonNum=this.props.item.userInfo[0].phoneNumber;
 	}
-	
+
   return (
   	<div>
   	<div id ='postDiv' className="jobsDiv container"><br />
   		<Row>
 			<Col md={4}>
-			<span><b>Name : </b></span>
+      <img src ="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profilePhoto"/>
 			<span>{this.props.item.user}</span>
 			</Col>
 			<Col md={4}>
-			<span><b>Job Title : </b></span>
+			<span><b>I Am a  </b></span>
 			<span>{this.props.item.jobTitle}</span>
 			</Col>
 			<Col md={4}>
@@ -31,10 +31,10 @@ render() {
 			<span>{this.props.item.category}</span>
 			</Col>
 		</Row><br />
-		
+
         <Row>
             <Col md={4}>
-            <span><b>From : </b></span>
+            <span><b>I Am avilable From : </b></span>
 			<span>{this.props.item.from}</span>
 			</Col>
 			<Col md={4}>
@@ -42,9 +42,9 @@ render() {
 			<span>{this.props.item.to}</span>
 			</Col>
 			<Col md={4}>
-			<span><b>Phone Number : </b></span>
+			<span><b>You can contact with me on : </b></span>
 			<span>{phonNum}</span>
-			</Col>	
+			</Col>
 		</Row><br />
 
 		<Row>
