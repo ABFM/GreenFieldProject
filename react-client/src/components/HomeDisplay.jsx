@@ -1,12 +1,40 @@
 import React from 'react';
+import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 class HomeDisplay extends React.Component {
   constructor(props) {
-  	console.log(props.item.to)
     super(props);
+  this.state = {
+    reciver: this.props.item.user,
+    message: ''
+  }
+  this.onChange = this.onChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
+	onChange(e) {
+        var message = e.target.message;
+        this.setState({
+          message: message
+        });
+  	};
+
+
+  	handleSubmit(event) {
+  		var that=this;
+  		event.preventDefault();
+  		axios.post('/sendMessage', this.state)
+    			.then(function (response) {
+    				console.log('message sent');
+
+    			})
+    			.catch(function (error) {
+      		console.log(error);
+    			});
+
+
+  		};
 
 render() {
 	let phonNum=0;
@@ -72,7 +100,7 @@ render() {
 			</Col>
 		 </Row>
      <Row id="row">
-     <form action="/sendMessage" method="post">
+     <form onSubmit={this.handleSubmit}>
      <h4> send message to  <span id="custom-span">{this.props.item.user}</span> </h4>
 
      <input type="text" placeholder="message"/>
