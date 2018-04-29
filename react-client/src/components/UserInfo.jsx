@@ -14,7 +14,7 @@ class UserInfo extends React.Component {
         nationality: ''}
 
     }
- 
+
     this.onChange = this.onChange.bind(this);
     this.handleSubmit  = this.handleSubmit.bind(this);
   }
@@ -32,7 +32,7 @@ class UserInfo extends React.Component {
     const posts = response.data;
     console.log(posts);
     this.setState({states:posts});
-    
+
   })
   .catch(function (error) {
     console.log(error);
@@ -49,11 +49,27 @@ class UserInfo extends React.Component {
             console.log(error);
         });
     };
- 
+
 render() {
-  
+
   return (
     <div>
+    <div id="information">
+
+      <h2> Name : {this.state.states.name} </h2>
+
+
+
+      <h2>  Phone Number : {this.state.states.phoneNumber} </h2>
+
+
+
+    <h2> Email: {this.state.states.email} </h2>
+    <h2> Gender: {this.state.states.gender}</h2>
+    <h2> Nationality: {this.state.states.nationality}</h2>
+<h2> Address: {this.state.states.address} </h2>
+<h2> Age: {this.state.states.age} </h2>
+  </div>
     <div id='profileUpdate' className="container wrapper well"><br />
     <span id="req" className="wrapper">* required</span>
       <form onSubmit = {this.handleSubmit}>
@@ -66,16 +82,16 @@ render() {
 	      </label>
       	</Col>
       	<Col md={4}>
-        <label id='signlable'>*Phone Number 
+        <label id='signlable'>*Phone Number
           <FormControl type="number" name="phoneNumber" placeholder="Phone Number" required
             onChange={this.onChange} value={this.state.states.phoneNumber}/>
           </label><br />
-	    
+
 	    </Col>
 		<Col md={4}>
 	       <label id='signlable'>*Email:
 	        <FormControl type="email" name="email" placeholder="Email" required
-	          onChange={this.onChange}  value={this.state.states.email} /> 
+	          onChange={this.onChange}  value={this.state.states.email} />
 	        </label><br />
         </Col>
      </Row><br />
@@ -88,12 +104,12 @@ render() {
         </Col>
 		<Col md={4}>
     <label id='signlable'>Nationality
-           <FormControl type="text" name="nationality" placeholder="Nationality" 
+           <FormControl type="text" name="nationality" placeholder="Nationality"
             onChange={this.onChange} value={this.state.states.nationality} />
           </label><br />
-        
+
 	    </Col>
-      	<Col md={4}>   
+      	<Col md={4}>
 	        <label id='signlable'>Address
 	        <FormControl type="text" name="address" placeholder="Address"
 	          onChange={this.onChange} value={this.state.states.address} />
@@ -101,7 +117,7 @@ render() {
 	    </Col>
 	  </Row><br />
 	  <Row>
-		<Col md={4}>    
+		<Col md={4}>
 	        <label id='signlable'>*Age
 	         <FormControl type="number" name="age" placeholder="Age" required
 	          onChange={this.onChange} value={this.state.states.age}/>
@@ -109,8 +125,8 @@ render() {
 	    </Col><br /><br /><br />
     <Col md={4}>
     </Col>
-      	<Col md={4}>   
-	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button> 
+      	<Col md={4}>
+	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button>
 		</Col>
 	  </Row>
       </form>
