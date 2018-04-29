@@ -55,7 +55,7 @@ app.get('/jobs', function(req, res){
 		} else {
 			res.send(jobs);
 		}
-	});	
+	});
 });
 app.get('/logged', function(req, res){
 	if(req.session.userName){
@@ -163,7 +163,7 @@ app.post('/job', function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			
+
 			res.send(jobs);
 		}
 	})
@@ -202,9 +202,14 @@ app.delete('/:jobTitle', function(req, res){
 	});
 });
 
+
+app.post('/sendMessage', (req, res) => {
+	res.redirect('/')
+})
+
+
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function() {
   console.log('listening on port ', app.get('port'));
 });
-
