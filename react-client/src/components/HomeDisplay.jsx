@@ -66,7 +66,14 @@ render() {
 			<span>{this.props.item.created_at.slice(0, 10)}</span>
 			</Col>
 		 </Row>
+     <form action="/sendMessage" method="post">
+     <span> send message to   </span>
+     <span>{this.props.item.user}</span>
+     <input type="text" placeholder="message"/>
+     <span> <button type="submit">send</button></span>
+     </form>
     </div><br />
+
     </div>
     )
   }
