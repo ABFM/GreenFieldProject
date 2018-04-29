@@ -3,10 +3,18 @@ const mongoose = require('mongoose');
 
 ////message Schema
 const messageSchema = mongoose.Schema({
-  sender:String,
-  reciver:  String,
-  date: Date,
-  message:String
+  sender:{
+    type: String,
+    required: true
+  },
+  reciver:  {
+    type: String,
+    required: true
+  },
+  message:{
+    type: String,
+    required: true
+  }
 });
 
 //Message Model

@@ -1,21 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var redirect = require('express-redirect');
-var db = require('../database-mongo/index.js');
-var Users = require('./Models/users');
-var Jobs = require('./Models/jobs');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var expressValidtor = require('express-validator');
-var mongoStore = require('connect-mongo')(session);
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const redirect = require('express-redirect');
+const db = require('../database-mongo/index.js');
+const Users = require('./Models/users');
+const Jobs = require('./Models/jobs');
+const msg = require('./Models/messages');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const expressValidtor = require('express-validator');
+const mongoStore = require('connect-mongo')(session);
 
 
 //it generates a unique id for the session
-var generateSecret = function (){
-	var j, x;
-	var random = ["f", "b", "C", "v", "I", "f", "N", "E", "j", "w", "i", "H", "N", "H", "z", "7", "n", "n", "a", "3", "V", "I", "Q", "J", "Q"]
-	for (var i = random.length - 1; i > 0; i--) {
+let generateSecret = function (){
+	let j, x;
+	 random = ["f", "b", "C", "v", "I", "f", "N", "E", "j", "w", "i", "H", "N", "H", "z", "7", "n", "n", "a", "3", "V", "I", "Q", "J", "Q"]
+	for (let i = random.length - 1; i > 0; i--) {
 		j = Math.floor(Math.random() * (i + 1));
 		x = random[i];
 		random[i] = random[j];
@@ -24,7 +25,7 @@ var generateSecret = function (){
 	return random.join('');
 };
 
-var app = express();
+const app = express();
 redirect(app);
 
 //connects the server with client side
@@ -112,8 +113,8 @@ app.get('/userInfo', function(req, res){
 
 //it updates the user information
 app.put('/updateUser', function (req, res) {
-	var query = req.session.userName;
-	var updatedData = req.body;
+	const query = req.session.userName;
+	const updatedData = req.body;
 	console.log(updatedData)
 	Users.updateUsers(query, updatedData, function(err, users){
 		if(err){
@@ -126,7 +127,7 @@ app.put('/updateUser', function (req, res) {
 
 //sends the user information to the database
 app.post("/signup",function(req, res){
-	var user = req.body
+	const user = req.body
 	Users.createUsers(user, function(err, userdata){
 		if(err){
 			console.log(err);
@@ -204,6 +205,19 @@ app.delete('/:jobTitle', function(req, res){
 
 
 app.post('/sendMessage', (req, res) => {
+	const message = new msg.Message({
+		sender: req.session.userName,
+		reciver: req.body.reciver,
+		message: req.body.message
+	})
+	message.save((err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+		}
+	})
 	res.redirect('/')
 })
 
