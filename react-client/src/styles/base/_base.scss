@@ -1,11 +1,37 @@
 html {
     font-size: 62.5%;
 }
+.contact{
+  color: #333;
+}
+.messages{
+  background-color: aliceblue;
+  color: grey;
+}
+#messagebody{
+  margin: 10px 200px ;
+  background-color: aliceblue;
+  color: #222;
+  border-radius: 10px;
+  padding: 5px;
+}
+#chatters{
+  margin: 10px;
+  font-size: 20px;
+  color: #333;
+  background-color: aliceblue;
+  border-radius: 20px;
+  padding: 20px;
+}
 body {
     font-family: Rajdhani;
     color: DARKBLUE;
     font-size: 1.6rem;
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background-color: #274046
+}
+
+h2{
+  color: white;
 }
 
 ul {
@@ -27,7 +53,7 @@ li {
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
 }
@@ -68,7 +94,7 @@ li a:hover:not(.is-active) {
 
 .is-active {
     background-color: STEELBLUE;
- 
+
 }
 
 #search-button {
@@ -95,7 +121,7 @@ li a:hover:not(.is-active) {
 }
 
 #catagory {
-    border-radius: 10px; 
+    border-radius: 10px;
     width: 800px;
     height: 70px;
     margin-bottom: 10px;
@@ -131,13 +157,13 @@ li a:hover:not(.is-active) {
 #txtArea {
   width: 550px;
   height: 120px;
-  resize: none;      
+  resize: none;
 }
 
 .jobsDiv {
-    background: url(https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimage.freepik.com%2Ffree-vector%2Fpolygonal-space-background-with-connecting-dots-and-lines_8188-135.jpg);
+    background-color: aliceblue;
     opacity: 0.8;
-    border-radius: 10px; 
+    border-radius: 10px;
     width: 900;
     margin-bottom: 10px;
     margin-top: 5px;
@@ -181,7 +207,7 @@ li a:hover:not(.is-active) {
 }
 
 #logform {
-    border-radius: 10px; 
+    border-radius: 10px;
     font-size: 16px;
     height: auto;
     padding: 10px;
@@ -219,11 +245,11 @@ li a:hover:not(.is-active) {
     font-size: 17px;
     width: 900px;
     height: 460px;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 #req {
-   font-size: 15px; 
+   font-size: 15px;
 }
 
 #signUpPage {
@@ -242,7 +268,7 @@ li a:hover:not(.is-active) {
 }
 
 #postTime {
-  color: green;
+  color: grey;
   font-size: 12px;
 }
 
@@ -258,13 +284,13 @@ li a:hover:not(.is-active) {
 }
 
 #profile {
-  background: linear-gradient(to bottom, #e6dada, #274046);  
+  background: linear-gradient(to bottom, #e6dada, #274046);
 }
 
 #profileUpdate {
   width: 900px;
   height: 395px;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 
 #signlable {
@@ -272,5 +298,40 @@ li a:hover:not(.is-active) {
 }
 
 #description {
- text-align: left; 
+
+}
+h2{
+  text-align: left;
+  color: white;
+  font-size: 16px;
+}
+#information{
+  background-color: #888;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 20px;
+  box-shadow: 3px 3px grey;
+}
+#profilePhoto{
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+
+}
+
+#row{
+  background-color: #777;
+}
+#custom-span{
+  color: white;
+}
+
+#photo{
+    display:none
+}
+
+#image {
+    width:300px;
+    height: 300px
+
 }

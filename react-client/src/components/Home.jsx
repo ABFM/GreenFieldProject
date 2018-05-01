@@ -6,22 +6,12 @@ import Search from './Search.jsx'
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       items: []
     }
   }
 
-  logout(event) {
-    var that=this
-    event.preventDefault();
-    axios.post('/logout', this.state.states)
-        .then(function (response) {
-        window.location.href = "/login";
-        })
-        .catch(function (error) {
-         console.log(error);
-        });
-      }
+
 
   searchJobCategory(category){
     var that = this;
@@ -46,7 +36,7 @@ class Home extends React.Component {
           .catch(function (error) {
             console.log(error);
         });
-  
+
   }
 
 //make new get requests for each filter
@@ -56,7 +46,7 @@ class Home extends React.Component {
     .then(response => {
     const posts = response.data;
     this.setState({items:posts});
-    
+
   })
   .catch(function (error) {
     console.log(error);
@@ -69,7 +59,7 @@ render() {
       arr.push(<HomeDisplay item={item} />)
     })
   return (
-  
+
     <div id='home'>
     <br />
     <div>
@@ -79,7 +69,7 @@ render() {
     {arr}
     </div>
     </div>
-    
+
     )
 }
 }

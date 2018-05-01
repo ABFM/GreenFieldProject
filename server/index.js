@@ -1,21 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var redirect = require('express-redirect');
-var db = require('../database-mongo/index.js');
-var Users = require('./Models/users');
-var Jobs = require('./Models/jobs');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var expressValidtor = require('express-validator');
-var mongoStore = require('connect-mongo')(session);
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const redirect = require('express-redirect');
+const db = require('../database-mongo/index.js');
+const Users = require('./Models/users');
+const Jobs = require('./Models/jobs');
+const msg = require('./Models/messages');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const expressValidtor = require('express-validator');
+const mongoStore = require('connect-mongo')(session);
 
 
 //it generates a unique id for the session
-var generateSecret = function (){
-	var j, x;
-	var random = ["f", "b", "C", "v", "I", "f", "N", "E", "j", "w", "i", "H", "N", "H", "z", "7", "n", "n", "a", "3", "V", "I", "Q", "J", "Q"]
-	for (var i = random.length - 1; i > 0; i--) {
+let generateSecret = function (){
+	let j, x;
+	 random = ["f", "b", "C", "v", "I", "f", "N", "E", "j", "w", "i", "H", "N", "H", "z", "7", "n", "n", "a", "3", "V", "I", "Q", "J", "Q"]
+	for (let i = random.length - 1; i > 0; i--) {
 		j = Math.floor(Math.random() * (i + 1));
 		x = random[i];
 		random[i] = random[j];
@@ -24,14 +25,14 @@ var generateSecret = function (){
 	return random.join('');
 };
 
-var app = express();
+const app = express();
 redirect(app);
 
 //connects the server with client side
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));  // make a limit for the photos
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(expressValidtor());
 app.use(session({
@@ -55,7 +56,7 @@ app.get('/jobs', function(req, res){
 		} else {
 			res.send(jobs);
 		}
-	});	
+	});
 });
 app.get('/logged', function(req, res){
 	if(req.session.userName){
@@ -112,8 +113,8 @@ app.get('/userInfo', function(req, res){
 
 //it updates the user information
 app.put('/updateUser', function (req, res) {
-	var query = req.session.userName;
-	var updatedData = req.body;
+	const query = req.session.userName;
+	const updatedData = req.body;
 	console.log(updatedData)
 	Users.updateUsers(query, updatedData, function(err, users){
 		if(err){
@@ -124,9 +125,9 @@ app.put('/updateUser', function (req, res) {
 	});
 });
 
-//sends the user information to the database
+  //sends the user information to the database
 app.post("/signup",function(req, res){
-	var user = req.body
+	const user = req.body
 	Users.createUsers(user, function(err, userdata){
 		if(err){
 			console.log(err);
@@ -163,7 +164,7 @@ app.post('/job', function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			
+
 			res.send(jobs);
 		}
 	})
@@ -202,9 +203,98 @@ app.delete('/:jobTitle', function(req, res){
 	});
 });
 
+
+
+app.post('/sendMessage', (req, res) => {
+	const message = new msg.Message({
+		sender: req.session.userName,
+		reciver: req.body.reciver,
+		message: req.body.message
+	})
+	message.save((err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			console.log(data);
+		}
+	})
+	res.redirect('/')
+})
+
+
+app.get('/getMessages', (req, res) => {
+let fullData = [];
+	msg.Message.find({reciver: req.session.userName}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			fullData = data
+		}
+	})
+	msg.Message.find({sender: req.session.userName}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			fullData =fullData.concat(data)
+			res.send(fullData)
+		}
+	})
+})
+
+app.post('/getMessages', (req, res) => {
+	console.log('hon',req.body);
+let messages = [];
+	msg.Message.find({
+		reciver: req.session.userName,
+		sender: req.body.client
+	}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			messages = data
+		}
+	})
+	msg.Message.find({
+		sender: req.body.client,
+		reciver: req.session.userName
+	}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			messages = messages.concat(data)
+			res.send(messages)
+		}
+	})
+})
+
+app.post('/photo',function(req,res){ // save the photo in the users schema and keep it upToDate
+	console.log("heerrrreeee", req.body.image)
+
+var image = req.body.image
+Users.updateUsers(req.session.userName,  { image: image },function(err,data){
+  		console.log("my name is , my name isisssisisi!", req.session.userName )
+  if(err){
+    console.log('error erroorrr', err)
+  }else{
+  	console.log('bushrra is here',data)
+    res.send(data)
+  }
+})
+
+})
+
+
+app.get('/me', (req, res) =>{
+	res.send(req.session.userName)
+})
+
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function() {
   console.log('listening on port ', app.get('port'));
 });
-
