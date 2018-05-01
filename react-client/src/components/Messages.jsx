@@ -114,17 +114,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 
 var newArr = uniqueArray(un)
-
-var temp = []
 var messages = this.state.messages;
-for (var i = 0; i < messages.length; i++) {
-  if (temp.indexOf(messages[i].message) === -1){
-    temp.push(messages[i].message)
-  }
-}
-
-var unMessages = uniqueArray(temp)
-
   return(
     <div>
       <Row>
@@ -143,8 +133,8 @@ var unMessages = uniqueArray(temp)
 </Col>
 <Col md={8}>
 <div >
-    {unMessages.map((message) =>(
-      <h2 class="messages">{message}</h2>
+    {messages.map((message) =>(
+      <h1 class="messages">{message.message}</h1>
     ))}
 </div>
 </Col>
