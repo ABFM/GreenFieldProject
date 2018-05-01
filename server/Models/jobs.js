@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-
-
 ////Jobs Schema
 var jobsSchema = mongoose.Schema({
   user:
@@ -39,6 +37,8 @@ var createJob = function(userName,data, callback){
 // i think we don't need to pass data because
 // it's gonna retrive all the jobs n the schema
 // idk though
+
+
 var allJobs = function (callback){
    Jobs.aggregate([
    {

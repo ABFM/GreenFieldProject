@@ -29,7 +29,7 @@ class NotAuthenticatedHome extends React.Component {
         .then(function(response){
           const posts = response.data;
             that.setState({items: posts});
-        })
+        }) 
           .catch(function (error) {
             console.log(error);
         });

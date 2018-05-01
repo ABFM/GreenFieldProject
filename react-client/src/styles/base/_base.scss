@@ -1,6 +1,28 @@
 html {
     font-size: 62.5%;
 }
+.contact{
+  color: #333;
+}
+.messages{
+  background-color: aliceblue;
+  color: grey;
+}
+#messagebody{
+  margin: 10px 200px ;
+  background-color: aliceblue;
+  color: #222;
+  border-radius: 10px;
+  padding: 5px;
+}
+#chatters{
+  margin: 10px;
+  font-size: 20px;
+  color: #333;
+  background-color: aliceblue;
+  border-radius: 20px;
+  padding: 20px;
+}
 body {
     font-family: Rajdhani;
     color: DARKBLUE;
@@ -276,7 +298,7 @@ li a:hover:not(.is-active) {
 }
 
 #description {
- text-align: left;
+
 }
 h2{
   text-align: left;
@@ -302,4 +324,14 @@ h2{
 }
 #custom-span{
   color: white;
+}
+
+#photo{
+    display:none
+}
+
+#image {
+    width:300px;
+    height: 300px
+
 }

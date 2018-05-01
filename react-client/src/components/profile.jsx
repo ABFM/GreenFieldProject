@@ -6,21 +6,28 @@ import UserInfo from './UserInfo.jsx';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+
+    this.state = {
       jobs: [],
-      user:[]
+      user:[],
+      update: false
+
+
     }
+
   }
 
 
+
+
 //make new get requests for each filter
-  componentDidMount() {
+  componentDidMount() { // this is the initial
     axios.get('/userJobs')
     .then(response => {
     const posts = response.data;
     this.setState({jobs:posts});
-    
-    
+
+
   }).catch(function (error) {
     console.log(error);
   });
@@ -33,7 +40,7 @@ getUserInfo(){
     const posts = response.data;
     console.log(posts);
     this.setState({user:posts});
-    
+
   })
   .catch(function (error) {
     console.log(error);
@@ -42,14 +49,14 @@ getUserInfo(){
 
 render() {
   var arr = [];
-  
     this.state.jobs.forEach(function(item) {
       arr.push(<JobsForUser item={item} />)
     })
-  
+
   return (
-  
+
     <div id="profile">
+    <br/>
     <br/>
     <div>
     <UserInfo user={this.state.user}/>
@@ -57,8 +64,10 @@ render() {
     <div>
     {arr}
     </div><br /><br />
+
+
     </div>
-    
+
     )
 }
 }

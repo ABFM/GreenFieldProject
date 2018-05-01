@@ -11,17 +11,7 @@ class Home extends React.Component {
     }
   }
 
-  logout(event) {
-    var that=this
-    event.preventDefault();
-    axios.post('/logout', this.state.states)
-        .then(function (response) {
-        window.location.href = "/login";
-        })
-        .catch(function (error) {
-         console.log(error);
-        });
-      }
+
 
   searchJobCategory(category){
     var that = this;

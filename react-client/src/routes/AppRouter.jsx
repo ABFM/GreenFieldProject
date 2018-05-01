@@ -6,7 +6,7 @@ import NavBar from '../components/Header.jsx';
 import Login from '../components/Login.jsx';
 import Home from '../components/Home.jsx';
 import Profile from '../components/profile.jsx';
-import Messages from '../components/Messages.jsx';
+import Messages from '../components/messages.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
 import axios from 'axios';

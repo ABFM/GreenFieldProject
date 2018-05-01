@@ -6,7 +6,8 @@ class HomeDisplay extends React.Component {
     super(props);
   this.state = {
     reciver: this.props.item.user,
-    message: ''
+    message: '',
+    sent: ''
   }
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,10 +15,12 @@ class HomeDisplay extends React.Component {
 
 
 	onChange(e) {
-        var message = e.target.message;
+        var message = e.target.value
+        console.log(message);
         this.setState({
-          message: message
+          message: e.target.value
         });
+        console.log(this.state);
   	};
 
 
@@ -26,10 +29,11 @@ class HomeDisplay extends React.Component {
   		event.preventDefault();
   		axios.post('/sendMessage', this.state)
     			.then(function (response) {
-    				console.log('message sent');
+    				that.setState({sent:"message sent to " + that.state.reciver});
 
     			})
     			.catch(function (error) {
+
       		console.log(error);
     			});
 
@@ -103,10 +107,11 @@ render() {
      <form onSubmit={this.handleSubmit}>
      <h4> send message to  <span id="custom-span">{this.props.item.user}</span> </h4>
 
-     <input type="text" placeholder="message"/>
+     <FormControl type = "text" name = "message" placeholder = "message" autoFocus required onChange={this.onChange} />
      <span> <button type="submit">send</button></span>
      </form>
      </Row>
+     <h3 className="SuccessMessage">{this.state.sent}</h3>
     </div><br />
 
     </div>

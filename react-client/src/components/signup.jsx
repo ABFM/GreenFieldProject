@@ -100,7 +100,8 @@ class SignUpForm extends React.Component {
      <FormControl type="number" name="age" placeholder="Age" required
       onChange={this.onChange} />
     </label><br />
-  </Col>  
+  </Col>
+
     <Col md={4}>
     <label id='signlable'>Nationality
    <FormControl type="text" name="nationality" placeholder="Nationality" 

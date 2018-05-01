@@ -31,8 +31,8 @@ redirect(app);
 //connects the server with client side
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));  // make a limit for the photos
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(expressValidtor());
 app.use(session({
@@ -125,7 +125,7 @@ app.put('/updateUser', function (req, res) {
 	});
 });
 
-//sends the user information to the database
+  //sends the user information to the database
 app.post("/signup",function(req, res){
 	const user = req.body
 	Users.createUsers(user, function(err, userdata){
@@ -204,6 +204,7 @@ app.delete('/:jobTitle', function(req, res){
 });
 
 
+
 app.post('/sendMessage', (req, res) => {
 	const message = new msg.Message({
 		sender: req.session.userName,
@@ -221,6 +222,76 @@ app.post('/sendMessage', (req, res) => {
 	res.redirect('/')
 })
 
+
+app.get('/getMessages', (req, res) => {
+let fullData = [];
+	msg.Message.find({reciver: req.session.userName}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			fullData = data
+		}
+	})
+	msg.Message.find({sender: req.session.userName}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			fullData =fullData.concat(data)
+			res.send(fullData)
+		}
+	})
+})
+
+app.post('/getMessages', (req, res) => {
+	console.log('hon',req.body);
+let messages = [];
+	msg.Message.find({
+		reciver: req.session.userName,
+		sender: req.body.client
+	}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			messages = data
+		}
+	})
+	msg.Message.find({
+		sender: req.body.client,
+		reciver: req.session.userName
+	}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			messages = messages.concat(data)
+			res.send(messages)
+		}
+	})
+})
+
+app.post('/photo',function(req,res){ // save the photo in the users schema and keep it upToDate
+	console.log("heerrrreeee", req.body.image)
+
+var image = req.body.image
+Users.updateUsers(req.session.userName,  { image: image },function(err,data){
+  		console.log("my name is , my name isisssisisi!", req.session.userName )
+  if(err){
+    console.log('error erroorrr', err)
+  }else{
+  	console.log('bushrra is here',data)
+    res.send(data)
+  }
+})
+
+})
+
+
+app.get('/me', (req, res) =>{
+	res.send(req.session.userName)
+})
 
 app.set('port', (process.env.PORT || 3000));
 
