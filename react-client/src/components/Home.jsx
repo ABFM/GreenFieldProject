@@ -48,8 +48,10 @@ class Home extends React.Component {
     this.setState({items:posts});
 
   })
+
   .catch(function (error) {
     console.log(error);
+
   });
 }
 

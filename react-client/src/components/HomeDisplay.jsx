@@ -7,8 +7,11 @@ class HomeDisplay extends React.Component {
   this.state = {
     reciver: this.props.item.user,
     message: '',
-    sent: ''
+    sent: '',
+    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
   }
+
+
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -42,8 +45,11 @@ class HomeDisplay extends React.Component {
 
 render() {
 	let phonNum=0;
+  let  image = '';
 	if(this.props.item.userInfo.length>0){
 		 phonNum=this.props.item.userInfo[0].phoneNumber;
+     image=this.props.item.userInfo[0].image
+    console.log("zo3by was here", image);
 	}
 
   return (
@@ -51,7 +57,7 @@ render() {
   	<div id ='postDiv' className="jobsDiv container"><br />
   		<Row id="row">
 			<Col md={4}>
-      <img src ="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profilePhoto"/>
+      <img src ={image || this.state.image} id="profilePhoto"/>
 			<span id="custom-span">   {this.props.item.user}</span>
 			</Col>
       </Row><br />

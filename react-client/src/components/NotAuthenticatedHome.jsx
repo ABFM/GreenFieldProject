@@ -6,7 +6,7 @@ import Search from './Search.jsx'
 class NotAuthenticatedHome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       items: []
     }
   }
@@ -29,7 +29,7 @@ class NotAuthenticatedHome extends React.Component {
         .then(function(response){
           const posts = response.data;
             that.setState({items: posts});
-        }) 
+        })
           .catch(function (error) {
             console.log(error);
         });
@@ -46,7 +46,7 @@ class NotAuthenticatedHome extends React.Component {
           .catch(function (error) {
             console.log(error);
         });
-  
+
   }
 
 //make new get requests for each filter
@@ -55,7 +55,7 @@ class NotAuthenticatedHome extends React.Component {
     .then(response => {
     const posts = response.data;
     this.setState({items:posts});
-    
+
   })
   .catch(function (error) {
     console.log(error);
@@ -69,7 +69,7 @@ render() {
       arr.push(<HomeDisplay item={item} />)
     })
   return (
-  
+
     <div>
     <br />
     <div>
@@ -79,7 +79,7 @@ render() {
     {arr}
     </div>
     </div>
-    
+
     )
 }
 }
