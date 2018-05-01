@@ -1,8 +1,10 @@
 html {
     font-size: 62.5%;
 }
-.messagePhoto{
-  padding-left: -40%;
+#messagePhoto{
+  width: 100px;
+  border-radius: 100px;
+
 }
 .contact{
   color: #333;
@@ -341,4 +343,5 @@ h2{
 h1{
   background-color: aliceblue;
   color: #222;
+  text-align: left;
 }
