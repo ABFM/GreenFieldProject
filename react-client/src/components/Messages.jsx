@@ -131,7 +131,9 @@ var newArr = uniqueArray(un)
 <Col md={8}>
 <div >
     {this.state.visible && this.state.messages.map((message) =>(
-      <h1 class="messages">{message.message}</h1>
+      <div>
+      <h1 class="messages"><span><img id="profilePhoto" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" /></span>{message.message}</h1>
+      </div>
     ))}
 </div>
 </Col>
