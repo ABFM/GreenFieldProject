@@ -49,20 +49,17 @@ class Messages extends React.Component {
 
   onClick(e) {
     let that = this;
-    this.setState({visible: !this.state.visible})
-    axios.post('/getMessages', {
-      client: e.target.innerText
-    })
-    .then(response => {
-      that.setState({
-        messages: response.data
-      })
-      console.log(this.state.messages);
-    })
-    .catch(function (error) {
-      console.log(error);
- });
+    let msgs = []
+    that.setState({visible: !that.state.visible})
 
+    for (var i = 0; i < that.state.items.length; i++) {
+      if (this.state.items[i].sender === e.target.innerText || this.state.items[i].reciver === e.target.innerText) {
+        msgs.push(this.state.items[i])
+      }
+    }
+    that.setState({
+      messages: msgs
+    })
 
   }
   onChange(e) {
@@ -114,7 +111,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 
 var newArr = uniqueArray(un)
-var messages = this.state.messages;
+
   return(
     <div>
       <Row>
@@ -133,7 +130,7 @@ var messages = this.state.messages;
 </Col>
 <Col md={8}>
 <div >
-    {messages.map((message) =>(
+    {this.state.visible && this.state.messages.map((message) =>(
       <h1 class="messages">{message.message}</h1>
     ))}
 </div>
