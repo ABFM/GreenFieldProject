@@ -5,6 +5,7 @@ const redirect = require('express-redirect');
 const db = require('../database-mongo/index.js');
 const Users = require('./Models/users');
 const Jobs = require('./Models/jobs');
+const service = require('./Models/services');
 const msg = require('./Models/messages');
 const Nexmo = require('nexmo');
 const cookieParser = require('cookie-parser');
@@ -76,6 +77,33 @@ app.post('/sms', (req, res) => {
 
 
 //it renders all the jobs
+app.get('/getServices',function (req,res){
+	// service.Service.find({},function(err,data){
+	// 	if(err){
+	// 		throw err
+	// 	}else{
+	// 		res.send(data)
+	// 	}
+	// })
+ service.Service.aggregate([
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+  }
+], function (err, data) {
+        if (err) {
+          console.log(err);}
+        console.log(data);
+        res.send(data)
+    });
+
+
+})
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
 		if(err){
@@ -102,6 +130,21 @@ app.get('/userJobs', function(req, res){
 		}
 	});
 });
+
+app.post('/service',function(req,res){
+	console.log('bushra is here', req.body)
+	service.createService(req.session.userName,req.body, function(err,data){
+		if(err){
+			console.log(err);
+		} else {
+			console.log('data', data)	
+			res.send(data);
+		}
+	})
+
+})
+
+
 
 //??
 app.post('/userJob', function(req, res){
