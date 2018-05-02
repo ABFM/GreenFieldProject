@@ -126,6 +126,7 @@ var newArr = uniqueArray(un)
     )
 
   )}
+  {/* "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" */}
 </div>
 </Col>
 <Col md={8}>
@@ -133,7 +134,7 @@ var newArr = uniqueArray(un)
     {this.state.visible && this.state.messages.map((message) =>(
       <div>
 
-      <h1 class="messages"><span><img id="messagePhoto" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" /></span>{message.message}</h1>
+      <h1 class="messages"><span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}</h1>
       </div>
     ))}
 </div>
