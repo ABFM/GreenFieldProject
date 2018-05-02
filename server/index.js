@@ -326,6 +326,30 @@ app.get('/me', (req, res) =>{
 	res.send(req.session.userName)
 })
 
+app.post('/increase', (req, res) =>{
+	Jobs.Jobs.update({_id: req.body.id}, {$inc: {rate: 1}}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.send(data);
+		}
+	})
+})
+
+
+app.post('/decrease', (req, res) =>{
+	Jobs.Jobs.update({_id: req.body.id}, {$inc: {rate: -1}}, (err, data) =>{
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.send(data);
+		}
+	})
+})
+
+
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function() {

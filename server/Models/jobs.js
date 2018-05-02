@@ -9,6 +9,7 @@ var jobsSchema = mongoose.Schema({
     type: String,
     require:true
   },
+  rate: Number,
   jobDescription: String,
   category: {
     type: String,
