@@ -117,6 +117,7 @@ var newArr = uniqueArray(un)
       <Row>
 <Col md={3}>
       <h3 className="SuccessMessage">{this.state.sent}</h3>
+      <h2 id="topMenu">contact</h2>
       <div>{newArr.map((item)=> (
         <div id="chatters">
           <div onClick={this.onClick}>{item}</div>
@@ -129,12 +130,13 @@ var newArr = uniqueArray(un)
   {/* "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" */}
 </div>
 </Col>
-<Col md={8}>
+<Col md={8} class="chats">
 <div >
     {this.state.visible && this.state.messages.map((message) =>(
-      <div>
+      <div >
 
-      <h1 class="messages"><span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}</h1>
+      <h1 class="messages"> <span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}<h5>From: {message.senderInfo[0].name + ' @ '+ message.time.slice(11, 16)}</h5></h1>
+
       </div>
     ))}
 </div>
