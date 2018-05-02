@@ -13,6 +13,7 @@ class Messages extends React.Component {
       message: '',
       sent: '',
       me: '',
+      friend: '',
       visible: true
     }
     this.onChange = this.onChange.bind(this);
@@ -58,8 +59,10 @@ class Messages extends React.Component {
       }
     }
     that.setState({
-      messages: msgs
+      messages: msgs,
+      friend: e.target.innerText
     })
+
 
   }
   onChange(e) {
@@ -68,14 +71,18 @@ class Messages extends React.Component {
         this.setState({
           message: e.target.value
         });
-        console.log(this.state);
+
   	};
 
 
   	handleSubmit(event) {
   		var that=this;
   		event.preventDefault();
-  		axios.post('/sendMessage', this.state)
+  		axios.post('/sendMessage', {
+        message: that.state.message,
+        sender: that.state.me,
+        reciver: that.state.friend
+      })
     			.then(function (response) {
     				that.setState({sent:"message sent"});
 
@@ -138,6 +145,13 @@ var newArr = uniqueArray(un)
 
       </div>
     ))}
+
+    <form onSubmit={this.handleSubmit} id="messageForm">
+    <h4> Send Message To {this.state.friend}</h4>
+    <FormControl type = "text" name = "message" placeholder = "message" autoFocus required onChange={this.onChange} />
+    <span> <button type="submit">send</button></span>
+    </form>
+
 </div>
 </Col>
 </Row>

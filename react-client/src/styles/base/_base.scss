@@ -1,6 +1,13 @@
 html {
     font-size: 62.5%;
 }
+#messageForm{
+  position: absolute;
+  left: 0px;
+  top: 700px;
+  width: 600px;
+}
+
 h5{
   text-align: right;
 }
@@ -17,21 +24,23 @@ h5{
 }
 
 #messagePhoto{
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 100px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 20px;
+  margin: 10px;
+
 }
 .contact{
   color: #333;
   font-family: Arial;
 }
-.messages{
+h1{
   background-color: aliceblue;
-  color: grey;
+  color: #222;
+  font-size: 20px;
+  text-align: left;
 }
+
 #messagebody{
   margin: 10px 200px ;
   background-color: aliceblue;
@@ -54,10 +63,12 @@ body {
     font-size: 1.6rem;
     background-color: #111;
 }
-
 h2{
+  text-align: left;
   color: white;
+  font-size: 16px;
 }
+
 
 ul {
     list-style-type: none;
@@ -259,11 +270,7 @@ li a:hover:not(.is-active) {
 }
 
 
-h2{
-  text-align: left;
-  color: white;
-  font-size: 16px;
-}
+
 #information{
   background: linear-gradient(to bottom, #666, #444);
   margin-left: 100px;
@@ -294,9 +301,4 @@ h2{
     width:300px;
     height: 300px
 
-}
-h1{
-  background-color: aliceblue;
-  color: #222;
-  text-align: left;
 }
