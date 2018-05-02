@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
-
+import MapContainer from './map.jsx'
 
 class JobsForm extends React.Component {
 	constructor(props) {
@@ -12,7 +12,9 @@ class JobsForm extends React.Component {
 			jobDescription: '',
 			category: '',
 			from: '',
-			to: ''},
+			to: '',
+			location: {latitude:0 , longitude:0 }
+		},
 			message:''
 			
 		}
@@ -20,6 +22,15 @@ class JobsForm extends React.Component {
 		this.onChange = this.onChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
+_onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
+var location = {latitude: obj.lat , longitude:obj.lng}
+console.log(location)
+var states = this.state.states;
+states.location = location
+this.setState({states: states })
+console.log(this.state.states.location)
+}
 
 	onChange(e) {
 	  var states = this.state.states;
@@ -35,6 +46,7 @@ class JobsForm extends React.Component {
 		event.preventDefault();
 		axios.post('/job', this.state.states)
   			.then(function (response) {
+  				console.log(response.data)
   				that.setState({message:"Job Added"});
 
   			})
@@ -47,7 +59,9 @@ class JobsForm extends React.Component {
 
 	render() {
 		return (
-			<center>
+			<center>  <div style={{height: '100vh', width: '100%'}}>
+<MapContainer click = {this._onClick.bind(this)}/>
+</div>
 			<div id="jobform" className="container wrapper well"><br />
 			<form onSubmit={this.handleSubmit}>
 			<Row>
@@ -120,8 +134,9 @@ class JobsForm extends React.Component {
 			    <Button id="jobb" className="btn btn-primary" type="submit" bsSize="large" >
 				     Add
 			    </Button>
-			    <h3 className="SuccessMessage">{this.state.message}</h3>
 
+			    <h3 className="SuccessMessage">{this.state.message}</h3>
+			   
 			</form>
 			</div>
 			</center>
