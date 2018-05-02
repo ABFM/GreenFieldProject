@@ -8,12 +8,14 @@ class HomeDisplay extends React.Component {
     reciver: this.props.item.user,
     message: '',
     sent: '',
-    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
-    number:'',
-    text:''
+    rate: this.props.item.rate,
+    jobs: this.props,
+    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
   }
 
 
+  this.increase = this.increase.bind(this);
+  this.decrease = this.decrease.bind(this);
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
   this.onChangeNumber = this.onChangeNumber.bind(this);
@@ -21,31 +23,25 @@ class HomeDisplay extends React.Component {
   this.sendSms = this.sendSms.bind(this);
   }
 
-
-sendSms(){
-  var x = this
-axios.post("/sms",{
-  number:x.state.number,
-  text:x.state.text
-})
-}
-
-onChangeText(e){
-let txt = e.target.value
-this.setState({
-  text:txt
-})
-console.log(this.state)
-}
-
-onChangeNumber(e){
-let number = e.target.value
-this.setState({
-  number:number
-})
-console.log(this.state)
-}
-
+  increase(e) {
+    let that = this;
+    axios.post('/increase', {
+      id: that.props.item._id
+    })
+    .then((res) =>{
+      console.log('increased');
+      that.render()
+    })
+  }
+  decrease(e) {
+    let that = this;
+    axios.post('/decrease', {
+      id: that.props.item._id
+    })
+    .then((res) => {
+      console.log('decreased');
+    })
+  }
 	onChange(e) {
         var message = e.target.value
         this.setState({
@@ -80,6 +76,7 @@ console.log(this.state)
   		};
 
 render() {
+  console.log(this.props.item._id);
 	let phonNum=0;
   let  image = '';
 	if(this.props.item.userInfo.length>0){
@@ -135,7 +132,7 @@ render() {
       </Col>
       </Row>
 
-      
+
 		</Row><br />
 
 		<Row>
@@ -164,6 +161,7 @@ render() {
      <span> <button type="submit">send</button></span>
      </form>
      </Row>
+     <span><h3>rate: {this.state.rate}</h3><button onClick={this.increase} id="up">up</button><button onClick={this.decrease} id="down">down</button></span>
      <h3 className="SuccessMessage">{this.state.sent}</h3>
     </div><br />
 
