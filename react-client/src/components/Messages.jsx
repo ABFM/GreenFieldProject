@@ -13,6 +13,7 @@ class Messages extends React.Component {
       message: '',
       sent: '',
       me: '',
+      friend: '',
       visible: true
     }
     this.onChange = this.onChange.bind(this);
@@ -58,8 +59,10 @@ class Messages extends React.Component {
       }
     }
     that.setState({
-      messages: msgs
+      messages: msgs,
+      friend: e.target.innerText
     })
+
 
   }
   onChange(e) {
@@ -68,14 +71,18 @@ class Messages extends React.Component {
         this.setState({
           message: e.target.value
         });
-        console.log(this.state);
+
   	};
 
 
   	handleSubmit(event) {
   		var that=this;
   		event.preventDefault();
-  		axios.post('/sendMessage', this.state)
+  		axios.post('/sendMessage', {
+        message: that.state.message,
+        sender: that.state.me,
+        reciver: that.state.friend
+      })
     			.then(function (response) {
     				that.setState({sent:"message sent"});
 
@@ -127,7 +134,6 @@ var newArr = uniqueArray(un)
     )
 
   )}
-  {/* "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" */}
 </div>
 </Col>
 <Col md={8} class="chats">
@@ -135,10 +141,17 @@ var newArr = uniqueArray(un)
     {this.state.visible && this.state.messages.map((message) =>(
       <div >
 
-      <h1 class="messages"> <span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}<h5>From: {message.senderInfo[0].name + ' @ '+ message.time.slice(11, 16)}</h5></h1>
+      <h1 class="messages"> <span><img id="messagePhoto" src={message.senderInfo[0].image || "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"} /></span>{message.message}<h5>From: {message.senderInfo[0].name + ' @ '+ message.time.slice(11, 16)}</h5></h1>
 
       </div>
     ))}
+
+    <form onSubmit={this.handleSubmit} id="messageForm">
+    <h4> Send Message To {this.state.friend}</h4>
+    <FormControl type = "text" name = "message" placeholder = "message" autoFocus required onChange={this.onChange} />
+    <span> <button type="submit">send</button></span>
+    </form>
+
 </div>
 </Col>
 </Row>
