@@ -223,28 +223,12 @@ app.post('/sendMessage', (req, res) => {
 })
 
 
-app.get('/getMessages', (req, res) => {
-let fullData = [];
-	msg.Message.find({reciver: req.session.userName}, (err, data) =>{
-		if (err) {
-			console.log(err);
-		}
-		else {
-			fullData = data
-		}
-	})
-	msg.Message.find({sender: req.session.userName}, (err, data) =>{
-		if (err) {
-			console.log(err);
-		}
-		else {
-			fullData =fullData.concat(data)
-			res.send(fullData)
-		}
-	})
-})
 
 app.post('/getMessages', (req, res) => {
+
+
+
+
 	console.log('hon',req.body);
 let messages = [];
 	msg.Message.find({
@@ -288,7 +272,29 @@ Users.updateUsers(req.session.userName,  { image: image },function(err,data){
 
 })
 
+app.get('/getMessages',  (req, res) =>{
+	msg.Message.aggregate([{$match:{$or: [{ reciver: req.session.userName }, { sender: req.session.userName }]}},
+ {
+	 $lookup:
+		 {
+			 from: "users",
+			 localField: "sender",
+			 foreignField: "userName",
+			 as: "senderInfo"
+		 }
+}
+], function (err, data) {
+			if (err) {
+				console.log(err);
 
+			}
+			//console.log(data[0].senderInfo);
+			//res.send( data)
+
+			res.send(data)
+	})
+
+})
 app.get('/me', (req, res) =>{
 	res.send(req.session.userName)
 })

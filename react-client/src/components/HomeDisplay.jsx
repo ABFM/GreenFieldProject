@@ -19,11 +19,9 @@ class HomeDisplay extends React.Component {
 
 	onChange(e) {
         var message = e.target.value
-        console.log(message);
         this.setState({
           message: e.target.value
         });
-        console.log(this.state);
   	};
 
 
@@ -32,7 +30,16 @@ class HomeDisplay extends React.Component {
   		event.preventDefault();
   		axios.post('/sendMessage', this.state)
     			.then(function (response) {
-    				that.setState({sent:"message sent to " + that.state.reciver});
+            axios.get('/me')
+            .then((res) =>{
+              if(res.data.length > 0){
+                that.setState({sent:"message sent to " + that.state.reciver});
+              }
+              else {
+                that.setState({sent:"why you didn't make an account?"});
+              }
+            })
+
 
     			})
     			.catch(function (error) {
@@ -49,7 +56,7 @@ render() {
 	if(this.props.item.userInfo.length>0){
 		 phonNum=this.props.item.userInfo[0].phoneNumber;
      image=this.props.item.userInfo[0].image
-    console.log("zo3by was here", image);
+
 	}
 
   return (

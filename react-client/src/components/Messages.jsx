@@ -49,20 +49,17 @@ class Messages extends React.Component {
 
   onClick(e) {
     let that = this;
-    this.setState({visible: !this.state.visible})
-    axios.post('/getMessages', {
-      client: e.target.innerText
-    })
-    .then(response => {
-      that.setState({
-        messages: response.data
-      })
-      console.log(this.state.messages);
-    })
-    .catch(function (error) {
-      console.log(error);
- });
+    let msgs = []
+    that.setState({visible: !that.state.visible})
 
+    for (var i = 0; i < that.state.items.length; i++) {
+      if (this.state.items[i].sender === e.target.innerText || this.state.items[i].reciver === e.target.innerText) {
+        msgs.push(this.state.items[i])
+      }
+    }
+    that.setState({
+      messages: msgs
+    })
 
   }
   onChange(e) {
@@ -115,16 +112,6 @@ for (var i = 0; i < arr.length; i++) {
 
 var newArr = uniqueArray(un)
 
-var temp = []
-var messages = this.state.messages;
-for (var i = 0; i < messages.length; i++) {
-  if (temp.indexOf(messages[i].message) === -1){
-    temp.push(messages[i].message)
-  }
-}
-
-var unMessages = uniqueArray(temp)
-
   return(
     <div>
       <Row>
@@ -139,12 +126,16 @@ var unMessages = uniqueArray(temp)
     )
 
   )}
+  {/* "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" */}
 </div>
 </Col>
 <Col md={8}>
 <div >
-    {unMessages.map((message) =>(
-      <h2 class="messages">{message}</h2>
+    {this.state.visible && this.state.messages.map((message) =>(
+      <div>
+
+      <h1 class="messages"><span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}</h1>
+      </div>
     ))}
 </div>
 </Col>
