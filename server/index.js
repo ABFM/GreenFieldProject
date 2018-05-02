@@ -6,10 +6,18 @@ const db = require('../database-mongo/index.js');
 const Users = require('./Models/users');
 const Jobs = require('./Models/jobs');
 const msg = require('./Models/messages');
+const Nexmo = require('nexmo');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const expressValidtor = require('express-validator');
 const mongoStore = require('connect-mongo')(session);
+
+
+
+const nexmo = new Nexmo({
+  apiKey: '5e260543',
+  apiSecret: 's6S4tx56f3jIEnuF'
+});
 
 
 //it generates a unique id for the session
@@ -47,6 +55,25 @@ app.use(session({
 // 	res.locals.session=req.session;
 // 	next();
 // })
+
+
+app.post('/sms', (req, res) => {
+  console.log("here's the data!!!",req.body)
+  const number = req.body.number;
+  const text = req.body.text;
+ nexmo.message.sendSms(number, '00962777717358', text, (error, response) => {
+  if(error) {
+    throw error;
+  } else if(response.messages[0].status != '0') {
+    console.error('here here here',response.messages);
+   console.log( 'Nexmo returned back a non-zero status');
+  } else {
+    console.log("jackel jackel",response);
+  }
+});
+});
+
+
 
 //it renders all the jobs
 app.get('/jobs', function(req, res){

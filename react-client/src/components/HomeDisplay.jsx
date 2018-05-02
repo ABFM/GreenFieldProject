@@ -8,14 +8,43 @@ class HomeDisplay extends React.Component {
     reciver: this.props.item.user,
     message: '',
     sent: '',
-    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
+    number:'',
+    text:''
   }
 
 
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.onChangeNumber = this.onChangeNumber.bind(this);
+  this.onChangeText = this.onChangeText.bind(this);
+  this.sendSms = this.sendSms.bind(this);
   }
 
+
+sendSms(){
+  var x = this
+axios.post("/sms",{
+  number:x.state.number,
+  text:x.state.text
+})
+}
+
+onChangeText(e){
+let txt = e.target.value
+this.setState({
+  text:txt
+})
+console.log(this.state)
+}
+
+onChangeNumber(e){
+let number = e.target.value
+this.setState({
+  number:number
+})
+console.log(this.state)
+}
 
 	onChange(e) {
         var message = e.target.value
@@ -96,6 +125,17 @@ render() {
 			<span>{phonNum}</span>
 			</Col>
       </Row>
+
+       <Row>
+      <Col md={12}><br />
+      <span><b>you can send me a direct message: </b></span>
+      <input type = 'text' placeholder= "send me a direct message" onChange={this.onChangeText}/>
+       <input type = 'text' placeholder= "type my number" onChange={this.onChangeNumber}/>
+       <input type = 'button' value= "Send Message" onClick={this.sendSms} />
+      </Col>
+      </Row>
+
+      
 		</Row><br />
 
 		<Row>
