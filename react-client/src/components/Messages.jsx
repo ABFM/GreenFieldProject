@@ -127,7 +127,6 @@ var newArr = uniqueArray(un)
     )
 
   )}
-  {/* "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" */}
 </div>
 </Col>
 <Col md={8} class="chats">
@@ -135,7 +134,7 @@ var newArr = uniqueArray(un)
     {this.state.visible && this.state.messages.map((message) =>(
       <div >
 
-      <h1 class="messages"> <span><img id="messagePhoto" src={message.senderInfo[0].image} /></span>{message.message}<h5>From: {message.senderInfo[0].name + ' @ '+ message.time.slice(11, 16)}</h5></h1>
+      <h1 class="messages"> <span><img id="messagePhoto" src={message.senderInfo[0].image || "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"} /></span>{message.message}<h5>From: {message.senderInfo[0].name + ' @ '+ message.time.slice(11, 16)}</h5></h1>
 
       </div>
     ))}
