@@ -14,7 +14,7 @@ class Messages extends React.Component {
       sent: '',
       me: '',
       friend: '',
-      visible: false
+      visible: true
     }
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -31,7 +31,7 @@ class Messages extends React.Component {
     .then(response => {
     const posts = response.data;
     console.log('my name is jackel', posts);
-    that.setState({items:posts});
+    that.setState({items: posts});
 
   })
   .catch(function (error) {
@@ -52,7 +52,6 @@ class Messages extends React.Component {
   onClick(e) {
     let that = this;
     let msgs = []
-    that.setState({visible: !that.state.visible})
 
     for (var i = 0; i < that.state.items.length; i++) {
       if (this.state.items[i].sender === e.target.innerText || this.state.items[i].reciver === e.target.innerText) {

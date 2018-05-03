@@ -52,13 +52,105 @@ app.use(session({
 	cookie:{maxAge: 180*60*1000}
 }));
 
-// app.use(function(req,res,next){
-// 	res.locals.session=req.session;
-// 	next();
-// })
+
+app.post('/increse',function(req,res){
+	console.log('here is the id', req.body.jobId)
+	var id = req.body.jobId
+	if(req.session.userName){
+			Jobs.Jobs.findOne({_id:id},function(err,found){
+				if(err){
+					throw rerr
+				}else{
+					if(found){
+						console.log('found is here', found)
+						if(found.incrementUser.includes(req.session.userName)){
+									res.send(found)
+						}else{
+							Jobs.Jobs.update({_id:id},{ $push: {incrementUser:req.session.userName},$pull:{decrementUser : req.session.userName} , $inc:{rating: + 1} },function(err,success){
+								if(err){
+									throw err
+								}
+								else{
+									Jobs.Jobs.findOne({_id:id},function(err,data){
+										if(err){
+											throw err
+										}else{
+											res.send(data)
+										}
+									})
+								
+								}
+							})
+						}	
+						
+					}
+				}
+			})
+}
+ else{res.sendStatus(404)
+ }
+	
+})
 
 
-app.post('/sms', (req, res) => {
+app.post('/decrese',function(req,res){
+	console.log('here is the id', req.body.jobId)
+	var id = req.body.jobId
+	if(req.session.userName){
+			Jobs.Jobs.findOne({_id:id},function(err,found){
+				if(err){
+					throw rerr
+				}else{
+					if(found){
+						console.log('found is here', found)
+						if(found.decrementUser.includes(req.session.userName)){
+									res.send(found)
+						}else{
+							Jobs.Jobs.update({_id:id},{ $push: {decrementUser:req.session.userName}, $pull:{incrementUser : req.session.userName} ,$inc:{rating: - 1} },function(err,success){
+								if(err){
+									throw err
+								}
+								else{
+									Jobs.Jobs.findOne({_id:id},function(err,data){
+										if(err){
+											throw err
+										}else{
+											res.send(data)
+										}
+									})
+								
+								}
+							})
+						}	
+						
+					}
+				}
+			})
+}
+ else{res.sendStatus(404)
+ }
+	
+})
+
+ // sending a SMS for the user in the Service homepage
+app.post('/serveiceSms', (req, res) => { 
+  console.log("here's the data!!!",req.body)
+  const number = req.body.number;
+  const text = req.body.text;
+ nexmo.message.sendSms(number, '00962777717358', text, (error, response) => {
+  if(error) {
+    throw error;
+  } else if(response.messages[0].status != '0') {
+    console.error('here here here',response.messages);
+   console.log( 'Nexmo returned back a non-zero status');
+  } else {
+    console.log("jackel jackel",response);
+  }
+});
+});
+
+ // sending a SMS for the user in the Job homepage
+app.post('/sms', (req, res) => {      
   console.log("here's the data!!!",req.body)
   const number = req.body.number;
   const text = req.body.text;

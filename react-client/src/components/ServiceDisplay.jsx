@@ -14,8 +14,35 @@ class ServiceDisplay extends React.Component {
 
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+   this.onChangeNumber = this.onChangeNumber.bind(this);
+  this.onChangeText = this.onChangeText.bind(this);
+  this.sendSms = this.sendSms.bind(this);
   }
 
+
+sendSms(){      // this function takes the number and text input 
+               // from the DOM and send it to the server
+  var x = this
+axios.post("/serveiceSms",{
+  number:x.state.number,
+  text:x.state.text
+})
+}
+
+onChangeText(e){
+let txt = e.target.value
+this.setState({
+  text:txt
+})
+
+}
+
+onChangeNumber(e){
+let number = e.target.value
+this.setState({
+  number:number
+})
+}
 
 	onChange(e) {
         var message = e.target.value
@@ -97,6 +124,14 @@ render() {
 			</Col>
       </Row>
 		</Row><br />
+      <Row>
+      <Col md={12}><br />
+      <span><b>you can send me a direct message: </b></span>
+      <input type = 'text' placeholder= "send me a direct message" onChange={this.onChangeText}/>
+       <input type = 'text' placeholder= "type my number" onChange={this.onChangeNumber}/>
+       <input type = 'button' value= "Send Message" onClick={this.sendSms} />
+      </Col>
+      </Row>
 
 		<Row>
 		<Col md={1}>

@@ -9,10 +9,12 @@ button{
   margin: 3px;
 }
 #messageForm{
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 500px;
-  width: 600px;
+  width: 100%;
+
+  background-color: white;
 }
 #up{
 background-color: #00CC66;
@@ -24,13 +26,14 @@ color: white;
 }
 h5{
   text-align: right;
+  padding: 10px;
 }
 .chats{
   background-color: #555;
 }
 #topMenu{
-  background-color: #999;
-  color: #ccc;
+  background-color: SteelBlue;
+  color: #white;
   text-align: center;
   padding: 10px 0px;
   border: solid 2px gray;
@@ -50,9 +53,11 @@ h5{
 }
 h1{
   background-color: aliceblue;
-  color: #222;
+  color: #444;
   font-size: 20px;
   text-align: left;
+  font-family: sans-serif;
+  border-radius: 10px;
 }
 
 #messagebody{
@@ -65,9 +70,9 @@ h1{
 #chatters{
   text-align: left;
   font-size: 20px;
-  color: #333;
-  border: solid 1px gray;
-  background-color: aliceblue;
+  color: #fff;
+  border: solid 0.3px gray;
+  background-color: DeepSkyBlue;
   padding: 10px;
   border-radius: 5px;
 }
@@ -105,7 +110,10 @@ li {
 }
 
 #HNA {
+
+
     background: linear-gradient(to right, deepskyblue, SteelBlue);
+
 }
 
 #Na {
