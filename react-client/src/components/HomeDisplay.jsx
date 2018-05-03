@@ -8,41 +8,77 @@ class HomeDisplay extends React.Component {
     reciver: this.props.item.user,
     message: '',
     sent: '',
-    rate: this.props.item.rate,
-    jobs: this.props,
-    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+    image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
+    number:'',
+    text:'',
+    rating: 0
   }
 
-
-  this.increase = this.increase.bind(this);
-  this.decrease = this.decrease.bind(this);
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-  // this.onChangeNumber = this.onChangeNumber.bind(this);
-  // this.onChangeText = this.onChangeText.bind(this);
-  // this.sendSms = this.sendSms.bind(this);
+
+  this.onChangeNumber = this.onChangeNumber.bind(this);
+  this.onChangeText = this.onChangeText.bind(this);
+  this.sendSms = this.sendSms.bind(this);
+   this.increse = this.increse.bind(this);
+   this.decrese = this.decrese.bind(this);
   }
 
-  increase(e) {
-    let that = this;
-    axios.post('/increase', {
-      id: that.props.item._id
-    })
-    .then((res) =>{
-      console.log('increased');
-      that.setState({rate: that.props.item.rate += 1})
-    })
-  }
-  decrease(e) {
-    let that = this;
-    axios.post('/decrease', {
-      id: that.props.item._id
-    })
-    .then((res) => {
-      console.log('decreased');
-      that.setState({rate: that.props.item.rate -= 1})
-    })
-  }
+increse(){
+var x = this
+axios.post('/increse',{jobId:x.props.item._id}).then(function(res){
+  console.log(res.data)
+  var rate = res.data.rating
+  x.setState({
+    rating:rate
+  })
+}).catch(function(res){
+  alert('please login')
+})
+
+}
+
+decrese(){
+  var x = this
+
+axios.post('/decrese',{jobId:x.props.item._id}).then(function(res){
+  var rate = res.data.rating
+  x.setState({
+    rating:rate
+  })
+}).catch(function(res){
+  alert('please login')
+})
+}
+
+
+
+sendSms(){      // this function takes the number and text input 
+               // from the DOM and send it to the server 
+  var x = this
+axios.post("/sms",{
+  number:x.state.number,
+  text:x.state.text
+})
+}
+
+onChangeText(e){
+let txt = e.target.value
+this.setState({
+  text:txt
+})
+
+}
+
+onChangeNumber(e){
+let number = e.target.value
+this.setState({
+  number:number
+})
+
+}
+
+
 	onChange(e) {
         var message = e.target.value
         this.setState({
@@ -77,7 +113,6 @@ class HomeDisplay extends React.Component {
   		};
 
 render() {
-  console.log(this.props.item._id);
 	let phonNum=0;
   let  image = '';
 	if(this.props.item.userInfo.length>0){
@@ -137,7 +172,6 @@ render() {
       </Col>
       </Row>
 
-
 		</Row><br />
 
 		<Row>
@@ -149,7 +183,9 @@ render() {
 			<Col md={1}>
 			</Col>
 		</Row><br />
-
+       <span> <p>Rating:</p> {this.state.rating}</span>
+       <br />
+       <span><button onClick= {this.increse}>Up </button> <bh /> <button onClick={this.decrese}>Down </button> </span>
 		 <Row>
 		 <Col md={8}>
 			</Col>
@@ -166,7 +202,6 @@ render() {
      <span> <button type="submit">send</button></span>
      </form>
      </Row>
-     <span><h3>rate: {this.state.rate}</h3><button onClick={this.increase} id="up">up</button><button onClick={this.decrease} id="down">down</button></span>
      <h3 className="SuccessMessage">{this.state.sent}</h3>
     </div><br />
 
