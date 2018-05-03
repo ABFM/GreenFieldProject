@@ -68,7 +68,7 @@ body {
     font-family: Arial;
     color: #333;
     font-size: 1.6rem;
-    background-color: #111;
+    background-color: #fff;
 }
 h2{
   text-align: left;
@@ -98,7 +98,7 @@ li {
 }
 
 #HNA {
-    background: linear-gradient(to right, #888, #444);
+    background: linear-gradient(to right, #222, #555);
 }
 
 #Na {
@@ -241,7 +241,7 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -249,7 +249,7 @@ li a:hover:not(.is-active) {
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
