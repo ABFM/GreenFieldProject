@@ -125,11 +125,15 @@ render() {
       </Row>
 
        <Row>
-      <Col md={12}><br />
-      <span><b>you can send me a direct message: </b></span>
-      <input type = 'text' placeholder= "send me a direct message" onChange={this.onChangeText}/>
+      <Col md={4}>
+      <input type = 'text' placeholder= "send free sms" onChange={this.onChangeText}/>
+      </Col>
+      <Col md={4}>
        <input type = 'text' placeholder= "type my number" onChange={this.onChangeNumber}/>
-       <input type = 'button' value= "Send Message" onClick={this.sendSms} />
+       </Col>
+       <Col md={4}>
+       <input type = 'button' value= "Send" onClick={this.sendSms} />
+
       </Col>
       </Row>
 
