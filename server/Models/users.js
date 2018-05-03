@@ -28,6 +28,7 @@ var usersSchema = mongoose.Schema({
       },
   nationality: String,
   image:String
+ 
 });
 
 //User Model

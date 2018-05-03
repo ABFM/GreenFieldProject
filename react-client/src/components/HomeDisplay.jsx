@@ -10,7 +10,8 @@ class HomeDisplay extends React.Component {
     sent: '',
     image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
     number:'',
-    text:''
+    text:'',
+    rating: 0
   }
 
 
@@ -19,7 +20,37 @@ class HomeDisplay extends React.Component {
   this.onChangeNumber = this.onChangeNumber.bind(this);
   this.onChangeText = this.onChangeText.bind(this);
   this.sendSms = this.sendSms.bind(this);
+   this.increse = this.increse.bind(this);
+   this.decrese = this.decrese.bind(this);
   }
+
+increse(){
+var x = this
+axios.post('/increse',{jobId:x.props.item._id}).then(function(res){
+  console.log(res.data)
+  var rate = res.data.rating
+  x.setState({
+    rating:rate
+  })
+}).catch(function(res){
+  alert('please login')
+})
+
+}
+
+decrese(){
+  var x = this
+
+axios.post('/decrese',{jobId:x.props.item._id}).then(function(res){
+  var rate = res.data.rating
+  x.setState({
+    rating:rate
+  })
+}).catch(function(res){
+  alert('please login')
+})
+}
+
 
 
 sendSms(){      // this function takes the number and text input 
@@ -136,7 +167,6 @@ render() {
       </Col>
       </Row>
 
-      
 		</Row><br />
 
 		<Row>
@@ -148,7 +178,9 @@ render() {
 			<Col md={1}>
 			</Col>
 		</Row><br />
-
+       <span> <p>Rating:</p> {this.state.rating}</span>
+       <br />
+       <span><button onClick= {this.increse}>Up </button> <bh /> <button onClick={this.decrese}>Down </button> </span>
 		 <Row>
 		 <Col md={8}>
 			</Col>
