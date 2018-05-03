@@ -2,7 +2,7 @@
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import GoogleMap from 'google-map-react'
-import Home from './Home.jsx' 
+import Home from './Home.jsx'
 export class MapContainer extends React.Component {
         constructor(props){
           super(props)
@@ -34,7 +34,7 @@ export class MapContainer extends React.Component {
 //   //   map.__customClickListener = this.refs.map.map_.addListener('click', this.handleClick.bind(this));
 //   // }, 200);
 // }
-     
+
        // _onClick(obj){ console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);}
             // google.maps.event.addListener(map, 'click', function(event){
             //   // Add marker
@@ -48,13 +48,13 @@ export class MapContainer extends React.Component {
             lat: 31.934885,
             lng: 35.881807
           }} />
- 
-        
-      
+
+
+
     );
   }
 }
- 
+
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyDWDPQOGfp6omxkvZllmc4pWTS0ye5-bwg'
 })(MapContainer)
