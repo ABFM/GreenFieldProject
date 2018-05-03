@@ -24,7 +24,7 @@ class JobsForm extends React.Component {
 	}
 
 _onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
-var location = {latitude: obj.lat , longitude:obj.lng}
+var location = {latitude: obj.latLng.lat() , longitude:obj.latLng.lng()}
 console.log(location)
 var states = this.state.states;
 states.location = location
