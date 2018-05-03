@@ -15,6 +15,19 @@ class HomeDisplay extends React.Component {
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
   this.onChangeNumber = this.onChangeNumber.bind(this);
