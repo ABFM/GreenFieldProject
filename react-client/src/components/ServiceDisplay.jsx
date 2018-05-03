@@ -1,48 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
-class HomeDisplay extends React.Component {
+class ServiceDisplay extends React.Component {
   constructor(props) {
     super(props);
   this.state = {
-    reciver: this.props.item.user,
+    reciver: this.props.service.user,
     message: '',
     sent: '',
-    rate: this.props.item.rate,
-    jobs: this.props,
     image:"https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
   }
 
 
-  this.increase = this.increase.bind(this);
-  this.decrease = this.decrease.bind(this);
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-  // this.onChangeNumber = this.onChangeNumber.bind(this);
-  // this.onChangeText = this.onChangeText.bind(this);
-  // this.sendSms = this.sendSms.bind(this);
   }
 
-  increase(e) {
-    let that = this;
-    axios.post('/increase', {
-      id: that.props.item._id
-    })
-    .then((res) =>{
-      console.log('increased');
-      that.setState({rate: that.props.item.rate += 1})
-    })
-  }
-  decrease(e) {
-    let that = this;
-    axios.post('/decrease', {
-      id: that.props.item._id
-    })
-    .then((res) => {
-      console.log('decreased');
-      that.setState({rate: that.props.item.rate -= 1})
-    })
-  }
+
 	onChange(e) {
         var message = e.target.value
         this.setState({
@@ -77,12 +51,11 @@ class HomeDisplay extends React.Component {
   		};
 
 render() {
-  console.log(this.props.item._id);
 	let phonNum=0;
   let  image = '';
-	if(this.props.item.userInfo.length>0){
-		 phonNum=this.props.item.userInfo[0].phoneNumber;
-     image=this.props.item.userInfo[0].image
+	if(this.props.service.userInfo.length>0){
+		 phonNum=this.props.service.userInfo[0].phoneNumber;
+     image=this.props.service.userInfo[0].image
 
 	}
 
@@ -92,29 +65,29 @@ render() {
   		<Row id="row">
 			<Col md={4}>
       <img src ={image || this.state.image} id="profilePhoto"/>
-			<span id="custom-span">   {this.props.item.user}</span>
+			<span id="custom-span">   {this.props.service.user}</span>
 			</Col>
       </Row><br />
 
 			<Col md={6}>
 			<span><b>I Am a  </b></span>
-			<span>{this.props.item.jobTitle}</span>
+			<span>{this.props.service.serviceTitle}</span>
 			</Col>
 
       <Col md={6}>
-      <span><b>Job Category : </b></span>
-      <span>{this.props.item.category}</span>
+      <span><b>Service Category : </b></span>
+      <span>{this.props.service.category}</span>
 
       </Col><br />
 
         <Row><br />
             <Col md={6}>
             <span>      I Am avilable  <b> From : </b></span>
-			         <span>{this.props.item.from}</span>
+			         <span>{this.props.service.from}</span>
 			</Col>
 			<Col md={6}>
 			<span><b>To : </b></span>
-			<span>{this.props.item.to}</span>
+			<span>{this.props.service.to}</span>
 			</Col>
 
       <Row>
@@ -123,28 +96,13 @@ render() {
 			<span>{phonNum}</span>
 			</Col>
       </Row>
-
-       <Row>
-      <Col md={4}>
-      <input type = 'text' placeholder= "send free sms" onChange={this.onChangeText}/>
-      </Col>
-      <Col md={4}>
-       <input type = 'text' placeholder= "type my number" onChange={this.onChangeNumber}/>
-       </Col>
-       <Col md={4}>
-       <input type = 'button' value= "Send" onClick={this.sendSms} />
-
-      </Col>
-      </Row>
-
-
 		</Row><br />
 
 		<Row>
 		<Col md={1}>
 		</Col>
 			<Col id="description" md={10}>
-			<span>{this.props.item.jobDescription}</span>
+			<span>{this.props.service.serviceDescription}</span>
 			</Col>
 			<Col md={1}>
 			</Col>
@@ -155,18 +113,17 @@ render() {
 			</Col>
 		 <Col id='postTime' md={4}>
 			<span><b>Posted at : </b></span>
-			<span>{this.props.item.created_at.slice(0, 10)}</span>
+			<span>{this.props.service.created_at.slice(0, 10)}</span>
 			</Col>
 		 </Row>
      <Row id="row">
      <form onSubmit={this.handleSubmit}>
-     <h4> send message to  <span id="custom-span">{this.props.item.user}</span> </h4>
+     <h4> send message to  <span id="custom-span">{this.props.service.user}</span> </h4>
 
      <FormControl type = "text" name = "message" placeholder = "message" autoFocus required onChange={this.onChange} />
      <span> <button type="submit">send</button></span>
      </form>
      </Row>
-     <span><h3>rate: {this.state.rate}</h3><button onClick={this.increase} id="up">up</button><button onClick={this.decrease} id="down">down</button></span>
      <h3 className="SuccessMessage">{this.state.sent}</h3>
     </div><br />
 
@@ -174,4 +131,4 @@ render() {
     )
   }
 }
-export default HomeDisplay;
+export default ServiceDisplay;
