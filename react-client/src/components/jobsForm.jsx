@@ -59,7 +59,7 @@ console.log(this.state.states.location)
 
 	render() {
 		return (
-			<center>  <div style={{height: '100vh', width: '100%'}}>
+			<center>  <div style={{height: '40%', width: '100%'}}>
 <MapContainer click = {this._onClick.bind(this)}/>
 </div>
 			<div id="jobform" className="container wrapper well"><br />

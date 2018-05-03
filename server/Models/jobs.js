@@ -23,6 +23,10 @@ var jobsSchema = mongoose.Schema({
   {
     type:Date,
     default:Date.now
+  },
+  location: {
+    latitude: Number,
+    longitude: Number
   }
 });
 

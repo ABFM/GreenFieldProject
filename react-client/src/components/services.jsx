@@ -23,9 +23,9 @@ class Services extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
- onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
-var location = {latitude: obj.lat , longitude:obj.lng}
-console.log(location)
+ _onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
+var location = {latitude: obj.latLng.lat() , longitude:obj.latLng.lng()}
+
 var states = this.state.states;
 states.location = location
 this.setState({states: states })
@@ -60,8 +60,8 @@ console.log(this.state.states.location)
 
 	render() {
 		return (
-			<center>  <div style={{height: '100vh', width: '100%'}}>
-<MapContainer click = {this.onClick.bind(this)}/>
+			<center>  <div style={{height: '40%', width: '100%'}}>
+<MapContainer click = {this._onClick.bind(this)}/>
 </div>
 			<div id="jobform" className="container wrapper well"><br />
 			<form onSubmit={this.handleSubmit}>

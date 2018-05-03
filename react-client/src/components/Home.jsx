@@ -76,20 +76,19 @@ searchLocation(myPostionLat, myPostionLng){
   if(this.state.check){ items = this.state.services}
   else {items = this.state.items}
     console.log("this function",myPostionLat, myPostionLng)
+  console.log(items)
     var jobsLoc = [];console.log("items0000",items[0].location);
     for (var i = 0; i < items.length; i++) {
      var a= geolib.getDistance(
     {latitude: myPostionLat, longitude: myPostionLng},items[i].location
 );  items[i].distance = a;
-     console.log(a)
+     console.log( a)
     }
     items.sort(function (a, b) {
   return a.distance - b.distance})
     console.log(items);
     this.setState({items: items});
-   // console.log(jobsLoc)
-    // var a =  geolib.orderByDistance({latitude: myPostionLat, longitude: myPostionLng}, [jobsLoc]);
-    // console.log("herehere",a)
+  
   }
 //make new get requests for each filter
   componentDidMount() {
