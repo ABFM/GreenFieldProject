@@ -1,11 +1,20 @@
 html {
     font-size: 62.5%;
 }
+button{
+  background-color: DeepSkyBlue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 3px;
+}
 #messageForm{
-  position: absolute;
+  position: fixed;
   left: 0px;
-  top: 700px;
-  width: 600px;
+  top: 500px;
+  width: 100%;
+
+  background-color: white;
 }
 #up{
 background-color: #00CC66;
@@ -17,13 +26,14 @@ color: white;
 }
 h5{
   text-align: right;
+  padding: 10px;
 }
 .chats{
   background-color: #555;
 }
 #topMenu{
-  background-color: #999;
-  color: #ccc;
+  background-color: SteelBlue;
+  color: #white;
   text-align: center;
   padding: 10px 0px;
   border: solid 2px gray;
@@ -43,9 +53,11 @@ h5{
 }
 h1{
   background-color: aliceblue;
-  color: #222;
+  color: #444;
   font-size: 20px;
   text-align: left;
+  font-family: sans-serif;
+  border-radius: 10px;
 }
 
 #messagebody{
@@ -58,9 +70,9 @@ h1{
 #chatters{
   text-align: left;
   font-size: 20px;
-  color: #333;
-  border: solid 1px gray;
-  background-color: aliceblue;
+  color: #fff;
+  border: solid 0.3px gray;
+  background-color: DeepSkyBlue;
   padding: 10px;
   border-radius: 5px;
 }
@@ -68,7 +80,7 @@ body {
     font-family: Arial;
     color: #333;
     font-size: 1.6rem;
-    background-color: #111;
+    background-color: #fff;
 }
 h2{
   text-align: left;
@@ -98,7 +110,10 @@ li {
 }
 
 #HNA {
-    background: linear-gradient(to right, #888, #444);
+
+
+    background: linear-gradient(to right, deepskyblue, SteelBlue);
+
 }
 
 #Na {
@@ -115,11 +130,11 @@ li {
 }
 
 li a:hover:not(.is-active) {
-    background-color: gray;
+    background-color: skyblue;
 }
 
 .is-active {
-    background-color: #ccc;
+    background-color: DodgerBlue;
 
 }
 
@@ -156,9 +171,10 @@ li a:hover:not(.is-active) {
 
 .jobsDiv {
     background-color: aliceblue;
+    border: solid 0.4px black;
     opacity: 0.8;
     border-radius: 10px;
-    width: 50%;
+    width: 70%;
     margin-bottom: 10px;
     margin-top: 5px;
     padding-top: 10px;
@@ -241,7 +257,7 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -249,21 +265,21 @@ li a:hover:not(.is-active) {
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
 }
 
 #postTime {
-  color: grey;
+  color: CornflowerBlue;
   font-size: 12px;
 }
 
 
 
 #profile {
-  background: linear-gradient(to bottom, #222, #888);
+  background-color: white;
 }
 
 #profileUpdate {
@@ -294,7 +310,7 @@ li a:hover:not(.is-active) {
 }
 
 #row{
-  background-color: #777;
+  background-color: LightSlateGrey;
 }
 #custom-span{
   color: white;

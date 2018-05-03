@@ -25,12 +25,13 @@ class Messages extends React.Component {
 
 
   componentDidMount() {
+
     let that = this
     axios.get('/getMessages')
     .then(response => {
     const posts = response.data;
     console.log('my name is jackel', posts);
-    that.setState({items:posts});
+    that.setState({items: posts});
 
   })
   .catch(function (error) {
@@ -51,7 +52,6 @@ class Messages extends React.Component {
   onClick(e) {
     let that = this;
     let msgs = []
-    that.setState({visible: !that.state.visible})
 
     for (var i = 0; i < that.state.items.length; i++) {
       if (this.state.items[i].sender === e.target.innerText || this.state.items[i].reciver === e.target.innerText) {

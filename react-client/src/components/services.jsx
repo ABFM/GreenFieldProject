@@ -16,7 +16,7 @@ class Services extends React.Component {
 			location: {latitude:0 , longitude:0 }
 		},
 			message:''
-			
+
 		}
 		this.baseState = this.state;
 		this.onChange = this.onChange.bind(this);
@@ -46,7 +46,7 @@ console.log(this.state.states.location)
 		event.preventDefault();
 		axios.post('/service', this.state.states)
   			.then(function (response) {
-  				
+
   				console.log(response.data)
   				that.setState({message:"service Added"});
 
@@ -104,7 +104,7 @@ console.log(this.state.states.location)
 			</Col>
 			<Col md={8}>
 			<label >
-			<FormControl id="txt`Area" componentClass="textarea"  maxLength={150} name="serviceDescription" placeholder = "Job Description" autoFocus required onChange={this.onChange} />
+			<FormControl id="txt`Area" componentClass="textarea"  maxLength={150} name="serviceDescription" placeholder = "Service Description" autoFocus required onChange={this.onChange} />
 			</label></Col>
 
 			<Col md={1}>
@@ -137,7 +137,7 @@ console.log(this.state.states.location)
 			    </Button>
 
 			    <h3 className="SuccessMessage">{this.state.message}</h3>
-			   
+
 			</form>
 			</div>
 			</center>
