@@ -71,7 +71,7 @@ render() {
 
 			<Col md={6}>
 			<span><b>I Am a  </b></span>
-			<span>{this.props.service.jobTitle}</span>
+			<span>{this.props.service.serviceTitle}</span>
 			</Col>
 
       <Col md={6}>

@@ -1,10 +1,17 @@
 html {
     font-size: 62.5%;
 }
+button{
+  background-color: DeepSkyBlue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 3px;
+}
 #messageForm{
   position: absolute;
   left: 0px;
-  top: 700px;
+  top: 500px;
   width: 600px;
 }
 #up{
@@ -68,7 +75,7 @@ body {
     font-family: Arial;
     color: #333;
     font-size: 1.6rem;
-    background-color: #111;
+    background-color: #fff;
 }
 h2{
   text-align: left;
@@ -98,7 +105,7 @@ li {
 }
 
 #HNA {
-    background: linear-gradient(to right, #888, #444);
+    background: linear-gradient(to right, deepskyblue, SteelBlue);
 }
 
 #Na {
@@ -115,11 +122,11 @@ li {
 }
 
 li a:hover:not(.is-active) {
-    background-color: gray;
+    background-color: skyblue;
 }
 
 .is-active {
-    background-color: #ccc;
+    background-color: DodgerBlue;
 
 }
 
@@ -156,9 +163,10 @@ li a:hover:not(.is-active) {
 
 .jobsDiv {
     background-color: aliceblue;
+    border: solid 0.4px black;
     opacity: 0.8;
     border-radius: 10px;
-    width: 50%;
+    width: 70%;
     margin-bottom: 10px;
     margin-top: 5px;
     padding-top: 10px;
@@ -241,7 +249,7 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -249,21 +257,21 @@ li a:hover:not(.is-active) {
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #222, #777);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
 }
 
 #postTime {
-  color: grey;
+  color: CornflowerBlue;
   font-size: 12px;
 }
 
 
 
 #profile {
-  background: linear-gradient(to bottom, #222, #888);
+  background-color: white;
 }
 
 #profileUpdate {
@@ -294,7 +302,7 @@ li a:hover:not(.is-active) {
 }
 
 #row{
-  background-color: #777;
+  background-color: LightSlateGrey;
 }
 #custom-span{
   color: white;

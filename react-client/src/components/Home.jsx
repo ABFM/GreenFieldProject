@@ -4,6 +4,8 @@ import HomeDisplay from './HomeDisplay.jsx';
 import Search from './Search.jsx'
 import MapContainer from './map.jsx'
 import geolib from 'geolib'
+import { Button, FormControl, Row, Col , ButtonToolbar } from 'react-bootstrap';
+
 import ServiceDisplay from './ServiceDisplay.jsx'
 class Home extends React.Component {
   constructor(props) {
@@ -68,10 +70,14 @@ getServices(){
         });
 
   }
-searchLocation(myPostionLat, myPostionLng,items){
-    console.log("this function",myPostionLat)
+searchLocation(myPostionLat, myPostionLng){
+  let items;
+  console.log(this.state.check)
+  if(this.state.check){ items = this.state.services}
+  else {items = this.state.items}
+    console.log("this function",myPostionLat, myPostionLng)
     var jobsLoc = [];console.log("items0000",items[0].location);
-    for (var i = 0; i < items.length; i++) { 
+    for (var i = 0; i < items.length; i++) {
      var a= geolib.getDistance(
     {latitude: myPostionLat, longitude: myPostionLng},items[i].location
 );  items[i].distance = a;
@@ -117,25 +123,35 @@ render() {
     this.state.items.forEach(function(item) {
       arr.push(<HomeDisplay item={item} />)
     })}
-    
+
   return (
 
     <div id='home'>
     <br />
     <div>
+      <Row>
+        <Col md={1}>
+        <select onChange={this.searchLocation.bind(this,this.state.lat, this.state.lng)} >
+          <option >
+            Sort by:
+          </option>
+          <option >
+            location
+          </option>
+        </select>
+    </Col>
+        <Col md={1}>
     <button onClick= {this.toggle.bind(this)}>Jobs</button>
+    </Col>
+    <Col md={1}>
     <button onClick = {this.toggle.bind(this)}>Services</button>
+    </Col>
 
-    <select onChange={this.searchLocation.bind(this,this.state.lat, this.state.lng,this.state.items)} >
-      <option >
-        Sort by:
-      </option>
-      <option >
-        location
-      </option>
-    </select>
+    <Col md={4}>
     <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
-    </div>
+  </Col>
+    </Row>
+  </div>
     <div>
     {arr}
     </div>

@@ -14,7 +14,7 @@ class Messages extends React.Component {
       sent: '',
       me: '',
       friend: '',
-      visible: true
+      visible: false
     }
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -25,6 +25,7 @@ class Messages extends React.Component {
 
 
   componentDidMount() {
+
     let that = this
     axios.get('/getMessages')
     .then(response => {
