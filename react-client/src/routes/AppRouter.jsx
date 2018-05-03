@@ -6,7 +6,8 @@ import NavBar from '../components/Header.jsx';
 import Login from '../components/Login.jsx';
 import Home from '../components/Home.jsx';
 import Profile from '../components/profile.jsx';
-import Messages from '../components/Messages.jsx';
+import Messages from '../components/messages.jsx';
+import Services from '../components/services.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
 import axios from 'axios';
@@ -46,6 +47,7 @@ axios.get('/logged')
 			<Route  path = "/profile" component = {Profile} />
 			<Route  path = "/login"	component = {Login} />
       <Route  path = "/messages" component = {Messages} />
+      <Route  path = "/services" component = {Services} />
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />
 
 

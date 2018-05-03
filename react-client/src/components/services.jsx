@@ -3,27 +3,27 @@ import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import MapContainer from './map.jsx'
 
-class JobsForm extends React.Component {
+class Services extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {states:{
 			user: '',
-			jobTitle: '',
-			jobDescription: '',
+			serviceTitle: '',
+			serviceDescription: '',
 			category: '',
 			from: '',
 			to: '',
 			location: {latitude:0 , longitude:0 }
 		},
 			message:''
-			
+
 		}
 		this.baseState = this.state;
 		this.onChange = this.onChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-_onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
+ onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
 var location = {latitude: obj.lat , longitude:obj.lng}
 console.log(location)
 var states = this.state.states;
@@ -44,10 +44,11 @@ console.log(this.state.states.location)
 	handleSubmit(event) {
 		var that=this;
 		event.preventDefault();
-		axios.post('/job', this.state.states)
+		axios.post('/service', this.state.states)
   			.then(function (response) {
+
   				console.log(response.data)
-  				that.setState({message:"Job Added"});
+  				that.setState({message:"service Added"});
 
   			})
   			.catch(function (error) {
@@ -60,7 +61,7 @@ console.log(this.state.states.location)
 	render() {
 		return (
 			<center>  <div style={{height: '100vh', width: '100%'}}>
-<MapContainer click = {this._onClick.bind(this)}/>
+<MapContainer click = {this.onClick.bind(this)}/>
 </div>
 			<div id="jobform" className="container wrapper well"><br />
 			<form onSubmit={this.handleSubmit}>
@@ -68,11 +69,11 @@ console.log(this.state.states.location)
 			<Col md={1}>
 			</Col>
 			<Col md={2}>
-			<span>Job Title</span>
+			<span>Service Title</span>
 			</Col>
 			<Col md={3}>
 			<label >
-			<FormControl maxLength={20} type="text" name="jobTitle" placeholder = "Job Title" autoFocus required onChange={this.onChange} />
+			<FormControl maxLength={20} type="text" name="serviceTitle" placeholder = "Service Title" autoFocus required onChange={this.onChange} />
 			</label></Col>
 			<Col md={2}>
 			<span>Category</span>
@@ -99,11 +100,11 @@ console.log(this.state.states.location)
 			<Col md={1}>
 			</Col>
 			<Col md={2}>
-			<span>Job Description</span>
+			<span>Service Description</span>
 			</Col>
 			<Col md={8}>
 			<label >
-			<FormControl id="txt`Area" componentClass="textarea"  maxLength={150} name="jobDescription" placeholder = "Job Description" autoFocus required onChange={this.onChange} />
+			<FormControl id="txt`Area" componentClass="textarea"  maxLength={150} name="serviceDescription" placeholder = "Service Description" autoFocus required onChange={this.onChange} />
 			</label></Col>
 
 			<Col md={1}>
@@ -136,7 +137,7 @@ console.log(this.state.states.location)
 			    </Button>
 
 			    <h3 className="SuccessMessage">{this.state.message}</h3>
-			   
+
 			</form>
 			</div>
 			</center>
@@ -145,4 +146,4 @@ console.log(this.state.states.location)
 }
 
 
-export default JobsForm;
+export default Services;

@@ -1,16 +1,93 @@
 html {
     font-size: 62.5%;
 }
-body {
-    font-family: Rajdhani;
-    color: DARKBLUE;
-    font-size: 1.6rem;
-    background-color: #274046
+button{
+  background-color: DeepSkyBlue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 3px;
 }
+#messageForm{
+  position: fixed;
+  left: 0px;
+  top: 500px;
+  width: 100%;
 
-h2{
+  background-color: white;
+}
+#up{
+background-color: #00CC66;
+color: white;
+}
+#down{
+  background-color: #FF0066;
   color: white;
 }
+h5{
+  text-align: right;
+  padding: 10px;
+}
+.chats{
+  background-color: #555;
+}
+#topMenu{
+  background-color: SteelBlue;
+  color: #white;
+  text-align: center;
+  padding: 10px 0px;
+  border: solid 2px gray;
+  border-radius: 10px;
+}
+
+#messagePhoto{
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  margin: 10px;
+
+}
+.contact{
+  color: #333;
+  font-family: Arial;
+}
+h1{
+  background-color: aliceblue;
+  color: #444;
+  font-size: 20px;
+  text-align: left;
+  font-family: sans-serif;
+  border-radius: 10px;
+}
+
+#messagebody{
+  margin: 10px 200px ;
+  background-color: aliceblue;
+  color: #222;
+  border-radius: 10px;
+  padding: 5px;
+}
+#chatters{
+  text-align: left;
+  font-size: 20px;
+  color: #fff;
+  border: solid 0.3px gray;
+  background-color: DeepSkyBlue;
+  padding: 10px;
+  border-radius: 5px;
+}
+body {
+    font-family: Arial;
+    color: #333;
+    font-size: 1.6rem;
+    background-color: #fff;
+}
+h2{
+  text-align: left;
+  color: white;
+  font-size: 16px;
+}
+
 
 ul {
     list-style-type: none;
@@ -24,33 +101,19 @@ li {
     float: left;
 }
 
-#search {
-    width: 100%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-}
+
 .Message{
-    color:red;
+    color: red;
 }
 .SuccessMessage{
-    color:green;
+    color:lightgreen;;
 }
-#posts {
-    font-family: Helvetica, Arial, sans-serif;
-    color: blue;
-    font-size: 1.6rem;
-    background-color: lightblue;
-}
-
 
 #HNA {
-    background: linear-gradient(to right, #000000, #434343);
+
+
+    background: linear-gradient(to right, deepskyblue, SteelBlue);
+
 }
 
 #Na {
@@ -67,49 +130,17 @@ li {
 }
 
 li a:hover:not(.is-active) {
-    background-color: gray;
+    background-color: skyblue;
 }
 
 .is-active {
-    background-color: STEELBLUE;
+    background-color: DodgerBlue;
 
 }
 
-#search-button {
-    background-color: STEELBLUE;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0px 2px;
-    cursor: pointer;
-    border-radius: 20%
 
-}
 
-.Sform-control {
-    height: 40px;
-    width: 175px;
-    font-size: 17px;
-    margin: 0px 3px;
 
-}
-
-#catagory {
-    border-radius: 10px;
-    width: 800px;
-    height: 70px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-bottom: 25px;
-}
 
 #catB {
   width: 375px;
@@ -140,16 +171,17 @@ li a:hover:not(.is-active) {
 
 .jobsDiv {
     background-color: aliceblue;
+    border: solid 0.4px black;
     opacity: 0.8;
     border-radius: 10px;
-    width: 900;
+    width: 70%;
     margin-bottom: 10px;
     margin-top: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
     padding-left: 10px;
-    color: black;
+    color: #333;
 }
 
 #userjob {
@@ -157,14 +189,8 @@ li a:hover:not(.is-active) {
     font-size: 18px;
 }
 
-#loginimg {
-    width: 180px;
-    height: 180px
-}
 
-#b {
-    color: #c7c7c7
-}
+
 
 .wrapper {
     margin-top: 50px;
@@ -231,38 +257,29 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
-    color: navyblue;
+    color: #333;
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background-color: #fff;
     background-size: cover;
     height: 93vh;
     width: 100vw;
 }
 
 #postTime {
-  color: grey;
+  color: CornflowerBlue;
   font-size: 12px;
 }
 
-#postDiv {
-  font-family: Mina;
-  color: #141414;
-  font-size: 18px;
-}
 
-#signup2 {
-  width: 870px;
-  height: 420px;
-}
 
 #profile {
-  background: linear-gradient(to bottom, #e6dada, #274046);
+  background-color: white;
 }
 
 #profileUpdate {
@@ -275,31 +292,36 @@ li a:hover:not(.is-active) {
   text-align: left;
 }
 
-#description {
- text-align: left;
-}
-h2{
-  text-align: left;
-  color: white;
-  font-size: 16px;
-}
+
+
 #information{
-  background-color: #888;
+  background: linear-gradient(to bottom, #666, #444);
   margin-left: 100px;
   margin-right: 100px;
-  padding: 20px;
+  padding: 60px;
   box-shadow: 3px 3px grey;
+  border-radius: 10px;
 }
 #profilePhoto{
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 100px;
 
 }
 
 #row{
-  background-color: #777;
+  background-color: LightSlateGrey;
 }
 #custom-span{
   color: white;
+}
+
+#photo{
+    display:none
+}
+
+#image {
+    width:300px;
+    height: 300px
+
 }

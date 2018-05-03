@@ -52,7 +52,6 @@ class Login extends React.Component {
          <div className="wrapper">
            <form className="form-signin" onSubmit={this.handleSubmit}>
             <h3 className="form-signin-heading">
-                <img id="loginimg" src="https://slack-imgs.com/?c=1&url=http%3A%2F%2Fntsescholars.com%2Fimages%2Floginpannel.png"  alt="User" />
                 <br />
                 <b id='b'>Login</b>
             </h3>
