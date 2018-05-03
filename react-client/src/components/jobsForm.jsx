@@ -24,7 +24,7 @@ class JobsForm extends React.Component {
 	}
 
 _onClick(obj){ //console.log(obj,obj.x, obj.y, obj.lat, obj.lng, obj.event);
-var location = {latitude: obj.lat , longitude:obj.lng}
+var location = {latitude: obj.latLng.lat() , longitude:obj.latLng.lng()}
 console.log(location)
 var states = this.state.states;
 states.location = location
@@ -59,7 +59,7 @@ console.log(this.state.states.location)
 
 	render() {
 		return (
-			<center>  <div style={{height: '100vh', width: '100%'}}>
+			<center>  <div style={{height: '40%', width: '100%'}}>
 <MapContainer click = {this._onClick.bind(this)}/>
 </div>
 			<div id="jobform" className="container wrapper well"><br />
