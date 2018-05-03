@@ -52,13 +52,25 @@ app.use(session({
 	cookie:{maxAge: 180*60*1000}
 }));
 
-// app.use(function(req,res,next){
-// 	res.locals.session=req.session;
-// 	next();
-// })
+ // sending a SMS for the user in the Service homepage
+app.post('/serveiceSms', (req, res) => { 
+  console.log("here's the data!!!",req.body)
+  const number = req.body.number;
+  const text = req.body.text;
+ nexmo.message.sendSms(number, '00962777717358', text, (error, response) => {
+  if(error) {
+    throw error;
+  } else if(response.messages[0].status != '0') {
+    console.error('here here here',response.messages);
+   console.log( 'Nexmo returned back a non-zero status');
+  } else {
+    console.log("jackel jackel",response);
+  }
+});
+});
 
-
-app.post('/sms', (req, res) => {
+ // sending a SMS for the user in the Job homepage
+app.post('/sms', (req, res) => {      
   console.log("here's the data!!!",req.body)
   const number = req.body.number;
   const text = req.body.text;
