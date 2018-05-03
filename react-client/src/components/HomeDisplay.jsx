@@ -18,9 +18,9 @@ class HomeDisplay extends React.Component {
   this.decrease = this.decrease.bind(this);
   this.onChange = this.onChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.onChangeNumber = this.onChangeNumber.bind(this);
-  this.onChangeText = this.onChangeText.bind(this);
-  this.sendSms = this.sendSms.bind(this);
+  // this.onChangeNumber = this.onChangeNumber.bind(this);
+  // this.onChangeText = this.onChangeText.bind(this);
+  // this.sendSms = this.sendSms.bind(this);
   }
 
   increase(e) {
@@ -30,7 +30,7 @@ class HomeDisplay extends React.Component {
     })
     .then((res) =>{
       console.log('increased');
-      that.render()
+      that.setState({rate: that.props.item.rate += 1})
     })
   }
   decrease(e) {
@@ -40,6 +40,7 @@ class HomeDisplay extends React.Component {
     })
     .then((res) => {
       console.log('decreased');
+      that.setState({rate: that.props.item.rate -= 1})
     })
   }
 	onChange(e) {

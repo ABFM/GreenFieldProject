@@ -71,7 +71,7 @@ getServices(){
 searchLocation(myPostionLat, myPostionLng,items){
     console.log("this function",myPostionLat)
     var jobsLoc = [];console.log("items0000",items[0].location);
-    for (var i = 0; i < items.length; i++) { 
+    for (var i = 0; i < items.length; i++) {
      var a= geolib.getDistance(
     {latitude: myPostionLat, longitude: myPostionLng},items[i].location
 );  items[i].distance = a;
