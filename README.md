@@ -4,10 +4,10 @@
 
 ## Team
 
-  - __Product Owner__: Atheer Mahmood
-  - __Scrum Master__: Dareen Hanash
-  - __Development Team Members__: Hamza Alwan, Livia Nistor
-
+  - __Product Owner__: Fares 
+  - __Scrum Master__: Bushra 
+  - __Development Team Members__: Mohammed alduraidi, Ahmad Zoaby
+  
 ## Table of Contents
 
 1. [Usage](#Usage)
