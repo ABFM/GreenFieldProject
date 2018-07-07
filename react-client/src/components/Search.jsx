@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, FormGroup, FormControl, ControlLabel, DropdownButton, MenuItem } from "react-bootstrap";
+import { Button, FormGroup, FormControl, ControlLabel, DropdownButton, MenuItem } from 'react-bootstrap';
 
 class Search extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -10,52 +10,51 @@ class Search extends React.Component {
       val: ''
     };
 
-    this.handleCategoryChange  = this.handleCategoryChange.bind(this);
-    this.handleInputChange  = this.handleInputChange.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(e) {
-    this.props.searchJobTitle(e.target.value)
+  handleInputChange (e) {
+    this.props.searchJobTitle(e.target.value);
     this.setState({
       value: e.target.value
     });
   }
 
-  handleCategoryChange(e){
-    this.props.searchJobCategory(e.target.value)
+  handleCategoryChange (e) {
+    this.props.searchJobCategory(e.target.value);
     this.setState({
       val: e.target.value
     });
   }
 
-  render() {
+  render () {
     return (
-      <div id="catagory" className="search-bar form-inline container">  
+      <div id='catagory' className='search-bar form-inline container'>
 
-      <div className="form-group">
-        <select id="catB" onChange={this.handleCategoryChange} value={this.state.val} className="form-control selectpicker btn btn-info">
-          <option value="All">Select Category</option>
-          <option value="Driver">Driver</option>
-          <option value="Home Maintenance">Home Maintenance</option>
-          <option value="Computer Maintenance">Computer Maintenance</option>
-          <option value="Babysitting">Babysitting</option>
-          <option value="Tutoring">Tutoring</option>
-        </select>
+        <div className='form-group'>
+          <select id='catB' onChange={this.handleCategoryChange} value={this.state.val} className='form-control selectpicker btn btn-info'>
+            <option value='All'>Select Category</option>
+            <option value='Driver'>Driver</option>
+            <option value='Home Maintenance'>Home Maintenance</option>
+            <option value='Computer Maintenance'>Computer Maintenance</option>
+            <option value='Babysitting'>Babysitting</option>
+            <option value='Tutoring'>Tutoring</option>
+          </select>
         </div>
 
-      <FormControl
+        <FormControl
           id='catI'
-          className="Sform-control"
-          type="text"
+          className='Sform-control'
+          type='text'
           value={this.state.value}
           onChange={this.handleInputChange}
-          placeholder="Job Title"
+          placeholder='Job Title'
         />
         <br /><br />
       </div>
     );
   }
 }
-
 
 export default Search;
