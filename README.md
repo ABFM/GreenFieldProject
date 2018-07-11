@@ -52,7 +52,8 @@ bower install
 
 
 ## Deployment
-	[Live-Demo](https://pocket-job.herokuapp.com)
+
+- 	[Live-Demo](https://pocket-job.herokuapp.com/)
 
 
 ## Credits
