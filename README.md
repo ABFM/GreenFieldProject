@@ -16,6 +16,7 @@
 
 ## Usage
   Clone or download the repo and run npm install, then open three terminal windows:
+
 1. 
 ```sh
 npm run server-dev
@@ -33,9 +34,9 @@ sudo mongod
 
 ## Requirements
 
-Node ^6.11.4
-MongoDb
-React
+1. Node ^6.11.4
+2. MongoDb
+3. React
 
 ## Development
 
@@ -51,7 +52,7 @@ bower install
 
 
 ## Deployment
-	[Live-Demo]()
+	[Live-Demo](https://pocket-job.herokuapp.com)
 
 
 ## Credits
